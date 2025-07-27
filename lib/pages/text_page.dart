@@ -1,0 +1,75 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:danak/theme.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+// ignore: must_be_immutable
+class TextPage extends StatelessWidget {
+  String title = Get.arguments[0];
+  String text = Get.arguments[1];
+
+  TextPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: scaffoldBackground,
+
+      body: CustomScrollView(
+        physics: BouncingScrollPhysics(),
+
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            automaticallyImplyLeading: false,
+            backgroundColor: primaryColor,
+            centerTitle: true,
+
+            expandedHeight: 200,
+            collapsedHeight: 60,
+
+            toolbarHeight: 60,
+            flexibleSpace: Align(
+              alignment: Alignment.center,
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                style: containerHeadStyle,
+              ),
+            ),
+
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusGeometry.vertical(
+                bottom: Radius.circular(30),
+              ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              Padding(
+                padding: const EdgeInsets.all(14),
+                child: AnimatedTextKit(
+                  isRepeatingAnimation: false,
+                  repeatForever: false,
+                  totalRepeatCount: 0,
+                  displayFullTextOnTap: true,
+
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      text,
+                      textStyle: bodyTextStyle,
+                      speed: Duration(milliseconds: 40),
+                    ),
+                  ],
+                ),
+              ),
+            ]),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+//Text(text, style: bodyTextStyle)
