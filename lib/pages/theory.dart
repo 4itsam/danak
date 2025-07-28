@@ -37,8 +37,9 @@ class Theory extends StatelessWidget {
                         theoryModels[index].title,
                         theoryModels[index].text,
                       ],
-                      transition: Transition.native,
-                      duration: Duration(milliseconds: 500),
+                      transition: Transition.fadeIn,
+                      duration: Duration(milliseconds: 200),
+                      
                     ),
                     child: Container(
                       height: 180,

@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Menu extends StatefulWidget {
+  const Menu({super.key});
+
   @override
   State<Menu> createState() => _MenuState();
 }
@@ -44,32 +46,31 @@ class _MenuState extends State<Menu> {
                 padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
                 child: textButton(
                   onTap: () {
-                    setState(() {
-                      Get.dialog(
-                        AlertDialog(
-                          backgroundColor: primaryColor,
-                          content: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(Assets.images.developer.path),
-                              SizedBox(width: 10),
-                              Text.rich(
-                                TextSpan(
-                                  text: devName,
-                                  style: devTextStyle,
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: "\n$devAbility",
-                                      style: devSubTextStyle,
-                                    ),
-                                  ],
-                                ),
+                    Get.dialog(
+                      transitionCurve: Curves.easeIn,
+                      AlertDialog(
+                        backgroundColor: primaryColor,
+                        content: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Image.asset(Assets.images.developer.path),
+                            SizedBox(width: 10),
+                            Text.rich(
+                              TextSpan(
+                                text: devName,
+                                style: devTextStyle,
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: "\n$devAbility",
+                                    style: devSubTextStyle,
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      );
-                    });
+                      ),
+                    );
                   },
                   text: dev,
                   icon: Assets.images.devIcon,
@@ -77,7 +78,18 @@ class _MenuState extends State<Menu> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
-                child: textButton(text: rate, icon: Assets.images.rateIcon),
+                child: textButton(
+                  text: rate,
+                  icon: Assets.images.rateIcon,
+                  onTap: () async {
+                    final Uri rateUri = Uri.parse(
+                      "https://myket.ir/app/com.danak.da",
+                    );
+                    if (await canLaunchUrl(rateUri)) {
+                      await launchUrl(rateUri,mode: LaunchMode.externalApplication);
+                    }
+                  },
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),

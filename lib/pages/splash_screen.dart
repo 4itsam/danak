@@ -23,11 +23,7 @@ class SplashScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Spacer(flex: 2),
-              SvgPicture.asset(
-                Assets.images.danakWhite,
-                width: 100,
-                height: 100,
-              ),
+              SvgPicture.asset(Assets.images.danakWhite, width: 80, height: 80),
               Spacer(flex: 2),
               Padding(
                 padding: const EdgeInsets.all(12),
@@ -36,14 +32,14 @@ class SplashScreen extends StatelessWidget {
                   children: [
                     Image.asset(
                       Assets.images.shakhes.path,
-                      width: 50,
-                      height: 50,
+                      width: 40,
+                      height: 40,
                     ),
                     SizedBox(width: 10),
                     SvgPicture.asset(
                       Assets.images.dakto,
-                      width: 40,
-                      height: 40,
+                      width: 30,
+                      height: 30,
                     ),
                   ],
                 ),

@@ -21,8 +21,9 @@ class LifeHistory extends StatelessWidget {
     getLifeHistory();
     return Scaffold(
       appBar: AppBar(
-         automaticallyImplyLeading: false
-        ,title: Text(RowSection.TextHistoryLife,style: rowSectionTitle,),),
+        automaticallyImplyLeading: false,
+        title: Text(RowSection.TextHistoryLife, style: rowSectionTitle),
+      ),
       body: SafeArea(
         child: CustomScrollView(
           physics: BouncingScrollPhysics(),
@@ -39,8 +40,8 @@ class LifeHistory extends StatelessWidget {
                         lifeHistory[index].title,
                         lifeHistory[index].text,
                       ],
-                      transition: Transition.native,
-                      duration: Duration(milliseconds: 500),
+                      transition: Transition.fadeIn,
+                      duration: Duration(milliseconds: 200),
                     ),
                     child: Container(
                       height: 180,

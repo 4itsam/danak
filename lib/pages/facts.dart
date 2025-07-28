@@ -42,8 +42,8 @@ class _FactsState extends State<Facts> {
                         factModels[index].title,
                         factModels[index].text,
                       ],
-                      transition: Transition.native,
-                      duration: Duration(milliseconds: 500),
+                      transition: Transition.fadeIn,
+                      duration: Duration(milliseconds: 200),
                     ),
                     child: Container(
                       height: 100,

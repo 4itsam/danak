@@ -37,8 +37,8 @@ class MainScreen extends StatelessWidget {
           onPressed: () {
             Get.to(
               () => Menu(),
-              transition: Transition.rightToLeft,
-              duration: Duration(milliseconds: 500),
+              transition: Transition.size,
+              duration: Duration(seconds: 1),
             );
           },
           icon: SvgPicture.asset(Assets.images.menu),
@@ -50,10 +50,10 @@ class MainScreen extends StatelessWidget {
           child: AnimationLimiter(
             child: Column(
               children: AnimationConfiguration.toStaggeredList(
-                duration: const Duration(milliseconds: 375),
+                duration: const Duration(seconds: 1),
                 childAnimationBuilder: (widget) => SlideAnimation(
                   duration: Duration(seconds: 1),
-                  delay: Duration(milliseconds: 100),
+                  delay: Duration(milliseconds: 300),
 
                   child: FadeInAnimation(child: widget),
                 ),
@@ -163,7 +163,7 @@ class MainScreen extends StatelessWidget {
                       onTap: () => Get.to(
                         () => Theory(),
                         transition: Transition.fadeIn,
-                        duration: Duration(milliseconds: 800),
+                        duration: Duration(milliseconds: 200),
                       ),
                     ),
                     rowContainerGen(
@@ -172,7 +172,7 @@ class MainScreen extends StatelessWidget {
                       onTap: () => Get.to(
                         () => LifeHistory(),
                         transition: Transition.fadeIn,
-                        duration: Duration(milliseconds: 800),
+                        duration: Duration(milliseconds: 200),
                       ),
                     ),
                     rowContainerGen(
@@ -181,7 +181,7 @@ class MainScreen extends StatelessWidget {
                       onTap: () => Get.to(
                         () => Facts(),
                         transition: Transition.fadeIn,
-                        duration: Duration(milliseconds: 800),
+                        duration: Duration(milliseconds: 200),
                       ),
                     ),
                   ],
@@ -225,7 +225,12 @@ class MainScreen extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
         onTap: () {
-          Get.to(() => TextPage(), arguments: [usbTitle, usbDescription]);
+          Get.to(
+            () => TextPage(),
+            arguments: [usbTitle, usbDescription],
+            transition: Transition.fadeIn,
+            duration: Duration(milliseconds: 200),
+          );
         },
         child: Container(
           height: 180,
