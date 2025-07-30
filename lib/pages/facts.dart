@@ -2,17 +2,20 @@ import 'package:danak/models/fact_models.dart';
 import 'package:danak/pages/text_page.dart';
 import 'package:danak/theme.dart';
 import 'package:danak/ui/text.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Facts extends StatefulWidget {
   const Facts({super.key});
-
   @override
   State<Facts> createState() => _FactsState();
 }
 
 class _FactsState extends State<Facts> {
+  final ScrollController _scrollController = ScrollController();
+  final ScrollBehavior _scrollBehavior = ScrollBehavior();
+  final DragStartBehavior _dragStartBehavior = DragStartBehavior.down;
   List<FactModels> factModels = [];
   void getFactModels() {
     factModels = FactModels.getFactModels();
@@ -28,6 +31,10 @@ class _FactsState extends State<Facts> {
       ),
       body: SafeArea(
         child: CustomScrollView(
+          controller: _scrollController,
+          dragStartBehavior: _dragStartBehavior,
+          scrollBehavior: _scrollBehavior,
+
           physics: BouncingScrollPhysics(),
           slivers: [
             SliverList.builder(

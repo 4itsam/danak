@@ -9,7 +9,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
-
   @override
   State<Menu> createState() => _MenuState();
 }
@@ -19,7 +18,7 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: ClampingScrollPhysics(),
         slivers: [
           SliverAppBar(
             shape: RoundedRectangleBorder(
@@ -79,6 +78,24 @@ class _MenuState extends State<Menu> {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
                 child: textButton(
+                  text: github,
+                  icon: Assets.images.github,
+                  onTap: () async {
+                    final Uri githubUri = Uri.parse(
+                      "https://github.com/4itsam/danak",
+                    );
+                    if (await canLaunchUrl(githubUri)) {
+                      await launchUrl(
+                        githubUri,
+                        mode: LaunchMode.externalApplication,
+                      );
+                    }
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
+                child: textButton(
                   text: rate,
                   icon: Assets.images.rateIcon,
                   onTap: () async {
@@ -86,7 +103,10 @@ class _MenuState extends State<Menu> {
                       "https://myket.ir/app/com.danak.da",
                     );
                     if (await canLaunchUrl(rateUri)) {
-                      await launchUrl(rateUri,mode: LaunchMode.externalApplication);
+                      await launchUrl(
+                        rateUri,
+                        mode: LaunchMode.externalApplication,
+                      );
                     }
                   },
                 ),
@@ -102,8 +122,9 @@ class _MenuState extends State<Menu> {
                   icon: Assets.images.privacyIcon,
                 ),
               ),
+              SizedBox(height: 20),
               socialIcons(),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               SvgPicture.asset(Assets.images.terms),
             ],
           ),

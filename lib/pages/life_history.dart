@@ -3,12 +3,16 @@ import 'package:danak/models/life_history_models.dart';
 import 'package:danak/pages/text_page.dart';
 import 'package:danak/theme.dart';
 import 'package:danak/ui/text.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class LifeHistory extends StatelessWidget {
+  final ScrollController _scrollController = ScrollController();
+  final ScrollBehavior _scrollBehavior =ScrollBehavior();
+  final DragStartBehavior _dragStartBehavior=DragStartBehavior.down;
   List<LifeHistoryModel> lifeHistory = [];
 
   LifeHistory({super.key});
@@ -26,7 +30,10 @@ class LifeHistory extends StatelessWidget {
       ),
       body: SafeArea(
         child: CustomScrollView(
+          controller: _scrollController,
           physics: BouncingScrollPhysics(),
+          scrollBehavior: _scrollBehavior,
+          dragStartBehavior: _dragStartBehavior,
           slivers: [
             SliverList.builder(
               itemCount: lifeHistory.length,

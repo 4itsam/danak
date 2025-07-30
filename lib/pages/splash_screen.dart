@@ -1,14 +1,18 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/pages/main_screen.dart';
 import 'package:danak/theme.dart';
+import 'package:danak/ui/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 4), () {
       Get.off(
         () => MainScreen(),
         transition: Transition.fade,
@@ -25,6 +29,18 @@ class SplashScreen extends StatelessWidget {
               Spacer(flex: 2),
               SvgPicture.asset(Assets.images.danakWhite, width: 80, height: 80),
               Spacer(flex: 2),
+              AnimatedTextKit(
+                isRepeatingAnimation: false,
+
+                animatedTexts: [
+                  TyperAnimatedText(
+
+                    tipsText,
+                    textStyle: splashTips,
+                    speed: Duration(milliseconds: 70),
+                  ),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Row(

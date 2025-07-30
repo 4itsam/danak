@@ -1,6 +1,6 @@
 class LifeHistoryModel {
-  String title;
-  String text;
+  final String title;
+  final String text;
   LifeHistoryModel({required this.title, required this.text});
 
   static List<LifeHistoryModel> getLifeHistory() {

@@ -44,6 +44,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/fire.png
   AssetGenImage get fire => const AssetGenImage('assets/images/fire.png');
 
+  /// File path: assets/images/github.svg
+  String get github => 'assets/images/github.svg';
+
   /// File path: assets/images/instaIcon.svg
   String get instaIcon => 'assets/images/instaIcon.svg';
 
@@ -95,6 +98,7 @@ class $AssetsImagesGen {
     developer,
     fact,
     fire,
+    github,
     instaIcon,
     life,
     lifeReading,

@@ -1,7 +1,7 @@
 class TheoryModels {
-  String title;
-  String author;
-  String text;
+  final String title;
+  final String author;
+  final String text;
   TheoryModels({required this.title, required this.author, required this.text});
 
   static List<TheoryModels> getTheoryModels() {

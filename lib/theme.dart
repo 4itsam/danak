@@ -22,10 +22,6 @@ final BoxDecoration bannerDecoration = BoxDecoration(
       spreadRadius: 0.7,
     ),
   ],
-  image: DecorationImage(
-    image: AssetImage(Assets.images.usb.path),
-    fit: BoxFit.fill,
-  ),
   borderRadius: BorderRadius.circular(20),
 );
 
@@ -161,4 +157,11 @@ final TextStyle devSubTextStyle = TextStyle(
 final BoxDecoration tipBoxStyle = BoxDecoration(
   color: primaryColor,
   borderRadius: BorderRadius.circular(20),
+);
+
+final TextStyle splashTips = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  fontSize: 12,
+  color: textWhiteSubTitle,
+  fontWeight: FontWeight.w900,
 );

@@ -1,5 +1,6 @@
+
 class Tips {
-  String tips;
+  final String tips;
 
   Tips({required this.tips});
   static List<Tips> getTips() {

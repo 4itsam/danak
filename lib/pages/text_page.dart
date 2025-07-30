@@ -26,9 +26,8 @@ class TextPage extends StatelessWidget {
             centerTitle: true,
 
             expandedHeight: 200,
-            collapsedHeight: 60,
-
-            toolbarHeight: 60,
+            collapsedHeight: 70,
+            toolbarHeight: 70,
             flexibleSpace: Align(
               alignment: Alignment.center,
               child: Text(

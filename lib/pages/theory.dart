@@ -3,12 +3,17 @@ import 'package:danak/models/theory_models.dart';
 import 'package:danak/pages/text_page.dart';
 import 'package:danak/theme.dart';
 import 'package:danak/ui/text.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class Theory extends StatelessWidget {
+  final ScrollController _scrollController = ScrollController();
+  final ScrollBehavior _scrollBehavior = ScrollBehavior();
+  final DragStartBehavior _dragStartBehavior = DragStartBehavior.down;
+
   List<TheoryModels> theoryModels = [];
 
   Theory({super.key});
@@ -26,9 +31,16 @@ class Theory extends StatelessWidget {
         title: Text(RowSection.TextTheory, style: rowSectionTitle),
       ),
       body: SafeArea(
-        child: CustomScrollView(physics: BouncingScrollPhysics(),slivers: [
-          SliverList.builder(itemCount: theoryModels.length,itemBuilder: (context, index) {
-            return Padding(
+        child: CustomScrollView(
+          controller: _scrollController,
+          dragStartBehavior: _dragStartBehavior,
+          scrollBehavior: _scrollBehavior,
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            SliverList.builder(
+              itemCount: theoryModels.length,
+              itemBuilder: (context, index) {
+                return Padding(
                   padding: const EdgeInsets.all(20),
                   child: InkWell(
                     onTap: () => Get.to(
@@ -39,7 +51,6 @@ class Theory extends StatelessWidget {
                       ],
                       transition: Transition.fadeIn,
                       duration: Duration(milliseconds: 200),
-                      
                     ),
                     child: Container(
                       height: 180,
@@ -80,9 +91,9 @@ class Theory extends StatelessWidget {
                     ),
                   ),
                 );
-          },)
-        ],
-
+              },
+            ),
+          ],
         ),
       ),
     );
