@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 // ignore: must_be_immutable
 class Theory extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
-  final ScrollBehavior _scrollBehavior = ScrollBehavior();
+  final ScrollBehavior _scrollBehavior = const ScrollBehavior();
   final DragStartBehavior _dragStartBehavior = DragStartBehavior.down;
 
   List<TheoryModels> theoryModels = [];
@@ -35,7 +35,7 @@ class Theory extends StatelessWidget {
           controller: _scrollController,
           dragStartBehavior: _dragStartBehavior,
           scrollBehavior: _scrollBehavior,
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverList.builder(
               itemCount: theoryModels.length,
@@ -50,7 +50,7 @@ class Theory extends StatelessWidget {
                         theoryModels[index].text,
                       ],
                       transition: Transition.fadeIn,
-                      duration: Duration(milliseconds: 200),
+                      duration: const Duration(milliseconds: 200),
                     ),
                     child: Container(
                       height: 180,

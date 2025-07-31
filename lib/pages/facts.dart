@@ -14,7 +14,7 @@ class Facts extends StatefulWidget {
 
 class _FactsState extends State<Facts> {
   final ScrollController _scrollController = ScrollController();
-  final ScrollBehavior _scrollBehavior = ScrollBehavior();
+  final ScrollBehavior _scrollBehavior = const ScrollBehavior();
   final DragStartBehavior _dragStartBehavior = DragStartBehavior.down;
   List<FactModels> factModels = [];
   void getFactModels() {
@@ -35,7 +35,7 @@ class _FactsState extends State<Facts> {
           dragStartBehavior: _dragStartBehavior,
           scrollBehavior: _scrollBehavior,
 
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverList.builder(
               itemCount: factModels.length,
@@ -50,7 +50,7 @@ class _FactsState extends State<Facts> {
                         factModels[index].text,
                       ],
                       transition: Transition.fadeIn,
-                      duration: Duration(milliseconds: 200),
+                      duration: const Duration(milliseconds: 200),
                     ),
                     child: Container(
                       height: 100,

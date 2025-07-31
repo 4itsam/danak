@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 // ignore: must_be_immutable
 class LifeHistory extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
-  final ScrollBehavior _scrollBehavior =ScrollBehavior();
+  final ScrollBehavior _scrollBehavior =const ScrollBehavior();
   final DragStartBehavior _dragStartBehavior=DragStartBehavior.down;
   List<LifeHistoryModel> lifeHistory = [];
 
@@ -31,7 +31,7 @@ class LifeHistory extends StatelessWidget {
       body: SafeArea(
         child: CustomScrollView(
           controller: _scrollController,
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           scrollBehavior: _scrollBehavior,
           dragStartBehavior: _dragStartBehavior,
           slivers: [
@@ -48,7 +48,7 @@ class LifeHistory extends StatelessWidget {
                         lifeHistory[index].text,
                       ],
                       transition: Transition.fadeIn,
-                      duration: Duration(milliseconds: 200),
+                      duration: const Duration(milliseconds: 200),
                     ),
                     child: Container(
                       height: 180,

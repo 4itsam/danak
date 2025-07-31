@@ -42,9 +42,9 @@ class MainScreen extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
             Get.to(
-              () => Menu(),
+              () => const Menu(),
               transition: Transition.size,
-              duration: Duration(seconds: 1),
+              duration: const Duration(seconds: 1),
             );
           },
           icon: SvgPicture.asset(Assets.images.menu),
@@ -58,8 +58,8 @@ class MainScreen extends StatelessWidget {
               children: AnimationConfiguration.toStaggeredList(
                 duration: const Duration(seconds: 1),
                 childAnimationBuilder: (widget) => SlideAnimation(
-                  duration: Duration(seconds: 1),
-                  delay: Duration(milliseconds: 300),
+                  duration: const Duration(seconds: 1),
+                  delay: const Duration(milliseconds: 300),
 
                   child: FadeInAnimation(child: widget),
                 ),
@@ -67,7 +67,7 @@ class MainScreen extends StatelessWidget {
                   banner(),
                   bottomSection(),
                   slider(),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   socialIcons(),
                 ],
               ),
@@ -97,12 +97,12 @@ class MainScreen extends StatelessWidget {
             );
           },
           options: CarouselOptions(
-            autoPlayAnimationDuration: Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(seconds: 3),
 
             animateToClosest: true,
             autoPlay: true,
             initialPage: 0,
-            scrollPhysics: BouncingScrollPhysics(),
+            scrollPhysics: const BouncingScrollPhysics(),
           ),
         ),
       ),
@@ -138,7 +138,7 @@ class MainScreen extends StatelessWidget {
                       onTap: () => Get.to(
                         () => Theory(),
                         transition: Transition.fadeIn,
-                        duration: Duration(milliseconds: 200),
+                        duration: const Duration(milliseconds: 200),
                       ),
                     ),
                     rowContainerGen(
@@ -147,16 +147,16 @@ class MainScreen extends StatelessWidget {
                       onTap: () => Get.to(
                         () => LifeHistory(),
                         transition: Transition.fadeIn,
-                        duration: Duration(milliseconds: 200),
+                        duration: const Duration(milliseconds: 200),
                       ),
                     ),
                     rowContainerGen(
                       image: Assets.images.fact,
                       text: RowSection.TextFacts,
                       onTap: () => Get.to(
-                        () => Facts(),
+                        () => const Facts(),
                         transition: Transition.fadeIn,
-                        duration: Duration(milliseconds: 200),
+                        duration: const Duration(milliseconds: 200),
                       ),
                     ),
                   ],
@@ -187,7 +187,7 @@ class MainScreen extends StatelessWidget {
               child: SvgPicture.asset(image),
             ),
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           Text(text, style: rowSectionTitle),
         ],
       ),
@@ -201,7 +201,7 @@ class MainScreen extends StatelessWidget {
           onTap: bannerModels[index].onTap,
           child: Card(
             color: primaryColor,
-            margin: EdgeInsets.only(top: 20, bottom: 20),
+            margin: const EdgeInsets.only(top: 20, bottom: 20),
             elevation: 4,
             shadowColor: shadowColor,
             clipBehavior: Clip.antiAlias,
@@ -225,7 +225,7 @@ class MainScreen extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: shadowColor,
-                    offset: Offset(0, 4),
+                    offset: const Offset(0, 4),
                     blurRadius: 8,
                     spreadRadius: 0.7,
                   ),
@@ -296,7 +296,7 @@ class MainScreen extends StatelessWidget {
       },
       itemCount: bannerModels.length,
       options: CarouselOptions(
-        scrollPhysics: BouncingScrollPhysics(
+        scrollPhysics: const BouncingScrollPhysics(
           decelerationRate: ScrollDecelerationRate.normal,
         ),
         enableInfiniteScroll: false,
@@ -305,7 +305,7 @@ class MainScreen extends StatelessWidget {
         autoPlay: true,
         animateToClosest: true,
 
-        autoPlayAnimationDuration: Duration(seconds: 3),
+        autoPlayAnimationDuration: const Duration(seconds: 3),
 
         initialPage: 0,
 

@@ -7,6 +7,7 @@ class RowSection {
   static const String TextTheory = "نظریه ها";
   static const String TextHistoryLife = "زندگی نامه";
   static const String TextFacts = "دانستنی ها";
+  static const String TextCall = "تماس با دانشکده";
 }
 
 class LoginText {

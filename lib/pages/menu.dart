@@ -18,10 +18,10 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         slivers: [
           SliverAppBar(
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.vertical(
                 bottom: Radius.circular(50),
               ),
@@ -39,7 +39,7 @@ class _MenuState extends State<Menu> {
           ),
           SliverList.list(
             children: [
-              SizedBox(height: 42),
+              const SizedBox(height: 42),
 
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
@@ -53,7 +53,7 @@ class _MenuState extends State<Menu> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Image.asset(Assets.images.developer.path),
-                            SizedBox(width: 10),
+                            const SizedBox(width: 10),
                             Text.rich(
                               TextSpan(
                                 text: devName,
@@ -100,7 +100,9 @@ class _MenuState extends State<Menu> {
                   icon: Assets.images.rateIcon,
                   onTap: () async {
                     final Uri rateUri = Uri.parse(
-                      "https://myket.ir/app/com.danak.da",
+                      //! To do 
+                      //change link for each market
+                      "https://cafebazaar.ir/app/com.danak.da",
                     );
                     if (await canLaunchUrl(rateUri)) {
                       await launchUrl(
@@ -122,9 +124,9 @@ class _MenuState extends State<Menu> {
                   icon: Assets.images.privacyIcon,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               socialIcons(),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               SvgPicture.asset(Assets.images.terms),
             ],
           ),

@@ -1,15 +1,14 @@
-import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/gen/fonts.gen.dart';
 import 'package:flutter/material.dart';
 
-Color primaryColor = Color(0xffE91E62);
-Color scaffoldBackground = Color(0xffF2F2F2);
-Color textBlackTitle = Color(0xff212121);
-Color subTextBlackTitle = Color(0xff434343);
-Color cardBackground = Colors.white;
-Color borderColor = Colors.white;
-Color shadowColor = Color.fromARGB(87, 88, 88, 88);
-Color textWhiteTitle = Colors.white;
+Color primaryColor = const Color(0xffE91E62);
+Color scaffoldBackground = const Color(0xffF2F2F2);
+Color textBlackTitle = const Color(0xff212121);
+Color subTextBlackTitle = const Color(0xff434343);
+Color cardBackground = const Color(0xffffffff);
+Color borderColor = const Color(0xffffffff);
+Color shadowColor = const Color.fromARGB(87, 88, 88, 88);
+Color textWhiteTitle = const Color(0xffffffff);
 Color textWhiteSubTitle = const Color.fromARGB(255, 226, 226, 226);
 
 final BoxDecoration bannerDecoration = BoxDecoration(
@@ -17,7 +16,7 @@ final BoxDecoration bannerDecoration = BoxDecoration(
   boxShadow: [
     BoxShadow(
       color: shadowColor,
-      offset: Offset(0, 4),
+      offset: const Offset(0, 4),
       blurRadius: 8,
       spreadRadius: 0.7,
     ),
@@ -59,7 +58,7 @@ final BoxDecoration rowBoxDecoration = BoxDecoration(
   boxShadow: [
     BoxShadow(
       color: shadowColor,
-      offset: Offset(0, 2),
+      offset: const Offset(0, 2),
       blurRadius: 6,
       spreadRadius: 0,
     ),
@@ -72,9 +71,9 @@ final BoxDecoration decorationBoxStyle = BoxDecoration(
     bottom: BorderSide(color: borderColor, width: 4, style: BorderStyle.solid),
   ),
   color: primaryColor,
-  boxShadow: [
+  boxShadow: const [
     BoxShadow(
-      color: const Color.fromARGB(134, 233, 30, 98),
+      color: Color.fromARGB(134, 233, 30, 98),
       offset: Offset(0, 4),
       blurRadius: 10,
       spreadRadius: 0.7,
@@ -135,7 +134,7 @@ final BoxDecoration textMenuButtonStyle = BoxDecoration(
   borderRadius: BorderRadius.circular(20),
 );
 
-final BoxDecoration bottonSheetStyle = BoxDecoration(
+final BoxDecoration bottonSheetStyle = const BoxDecoration(
   color: Colors.white,
   borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
 );

@@ -12,11 +12,11 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 4), () {
       Get.off(
         () => MainScreen(),
         transition: Transition.fade,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
       );
     });
     return Scaffold(
@@ -26,9 +26,9 @@ class SplashScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Spacer(flex: 2),
+              const Spacer(flex: 2),
               SvgPicture.asset(Assets.images.danakWhite, width: 80, height: 80),
-              Spacer(flex: 2),
+              const Spacer(flex: 2),
               AnimatedTextKit(
                 isRepeatingAnimation: false,
 
@@ -37,7 +37,7 @@ class SplashScreen extends StatelessWidget {
 
                     tipsText,
                     textStyle: splashTips,
-                    speed: Duration(milliseconds: 70),
+                    speed: const Duration(milliseconds: 70),
                   ),
                 ],
               ),
@@ -51,7 +51,7 @@ class SplashScreen extends StatelessWidget {
                       width: 40,
                       height: 40,
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     SvgPicture.asset(
                       Assets.images.dakto,
                       width: 30,

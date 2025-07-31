@@ -16,7 +16,7 @@ class TextPage extends StatelessWidget {
       backgroundColor: scaffoldBackground,
 
       body: CustomScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
 
         slivers: [
           SliverAppBar(
@@ -24,10 +24,10 @@ class TextPage extends StatelessWidget {
             automaticallyImplyLeading: false,
             backgroundColor: primaryColor,
             centerTitle: true,
-
             expandedHeight: 200,
             collapsedHeight: 70,
             toolbarHeight: 70,
+            
             flexibleSpace: Align(
               alignment: Alignment.center,
               child: Text(
@@ -37,7 +37,7 @@ class TextPage extends StatelessWidget {
               ),
             ),
 
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.vertical(
                 bottom: Radius.circular(30),
               ),
@@ -57,7 +57,7 @@ class TextPage extends StatelessWidget {
                     TypewriterAnimatedText(
                       text,
                       textStyle: bodyTextStyle,
-                      speed: Duration(milliseconds: 40),
+                      speed: const Duration(milliseconds: 40),
                     ),
                   ],
                 ),
@@ -69,6 +69,3 @@ class TextPage extends StatelessWidget {
     );
   }
 }
-
-
-//Text(text, style: bodyTextStyle)
