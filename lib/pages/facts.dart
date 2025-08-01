@@ -1,10 +1,11 @@
-import 'package:danak/models/fact_models.dart';
+
 import 'package:danak/pages/text_page.dart';
-import 'package:danak/theme.dart';
+import 'package:danak/ui/theme.dart';
 import 'package:danak/ui/text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:danak/models/data.dart';
 
 class Facts extends StatefulWidget {
   const Facts({super.key});
@@ -16,14 +17,12 @@ class _FactsState extends State<Facts> {
   final ScrollController _scrollController = ScrollController();
   final ScrollBehavior _scrollBehavior = const ScrollBehavior();
   final DragStartBehavior _dragStartBehavior = DragStartBehavior.down;
-  List<FactModels> factModels = [];
-  void getFactModels() {
-    factModels = FactModels.getFactModels();
-  }
+
+
 
   @override
   Widget build(BuildContext context) {
-    getFactModels();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(RowSection.TextFacts, style: rowSectionTitle),
@@ -38,7 +37,7 @@ class _FactsState extends State<Facts> {
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverList.builder(
-              itemCount: factModels.length,
+              itemCount: factList.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(20),
@@ -46,8 +45,8 @@ class _FactsState extends State<Facts> {
                     onTap: () => Get.to(
                       () => TextPage(),
                       arguments: [
-                        factModels[index].title,
-                        factModels[index].text,
+                        factList[index].title,
+                        factList[index].text,
                       ],
                       transition: Transition.fadeIn,
                       duration: const Duration(milliseconds: 200),
@@ -63,7 +62,7 @@ class _FactsState extends State<Facts> {
                             child: Center(
                               child: Text(
                                 textAlign: TextAlign.center,
-                                factModels[index].title,
+                                factList[index].title,
                                 style: theoryBannerStyle,
                               ),
                             ),

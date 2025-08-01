@@ -1,35 +1,23 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:danak/gen/assets.gen.dart';
-import 'package:danak/models/banner_models.dart';
-import 'package:danak/models/tips.dart';
 import 'package:danak/pages/facts.dart';
 import 'package:danak/pages/life_history.dart';
 import 'package:danak/pages/menu.dart';
 import 'package:danak/pages/theory.dart';
-import 'package:danak/theme.dart';
+import 'package:danak/ui/theme.dart';
 import 'package:danak/ui/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:danak/models/data.dart';
 
 // ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
-  List<Tips> tips = [];
-  void getTips() {
-    tips = Tips.getTips();
-  }
-
-  List<BannerModels> bannerModels = [];
-  void getBannerModels() {
-    bannerModels = BannerModels.getBannerModels();
-  }
 
   @override
   Widget build(BuildContext context) {
-    getTips();
-    getBannerModels();
     return Scaffold(
       backgroundColor: scaffoldBackground,
       appBar: AppBar(
@@ -64,9 +52,9 @@ class MainScreen extends StatelessWidget {
                   child: FadeInAnimation(child: widget),
                 ),
                 children: [
-                  banner(),
+                  banner(bannerList),
                   bottomSection(),
-                  slider(),
+                  slider(tipsList),
                   const SizedBox(height: 20),
                   socialIcons(),
                 ],
@@ -78,7 +66,7 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  Padding slider() {
+  Padding slider(tipsList) {
     return Padding(
       padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
       child: Container(
@@ -86,12 +74,12 @@ class MainScreen extends StatelessWidget {
         width: double.infinity,
         decoration: tipBoxStyle,
         child: CarouselSlider.builder(
-          itemCount: tips.length,
+          itemCount: tipsList.length,
           itemBuilder: (context, index, realIndex) {
             return Center(
               child: Text(
                 textAlign: TextAlign.center,
-                tips[index].tips,
+                tipsList[index].tips,
                 style: bannerTextStyle,
               ),
             );
@@ -194,11 +182,11 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  CarouselSlider banner() {
+  CarouselSlider banner(bannerList) {
     return CarouselSlider.builder(
       itemBuilder: (context, index, realIndex) {
         return GestureDetector(
-          onTap: bannerModels[index].onTap,
+          onTap: bannerList[index].onTap,
           child: Card(
             color: primaryColor,
             margin: const EdgeInsets.only(top: 20, bottom: 20),
@@ -220,7 +208,7 @@ class MainScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(bannerModels[index].image),
+                  image: AssetImage(bannerList[index].image),
                 ),
                 boxShadow: [
                   BoxShadow(
@@ -277,11 +265,11 @@ class MainScreen extends StatelessWidget {
                     right: 15,
                     child: Text.rich(
                       TextSpan(
-                        text: bannerModels[index].title,
+                        text: bannerList[index].title,
                         style: bannerTextStyle,
                         children: <TextSpan>[
                           TextSpan(
-                            text: '\n${bannerModels[index].subTitle}',
+                            text: '\n${bannerList[index].subTitle}',
                             style: bannersubTextStyle,
                           ),
                         ],
@@ -294,15 +282,15 @@ class MainScreen extends StatelessWidget {
           ),
         );
       },
-      itemCount: bannerModels.length,
+      itemCount: bannerList.length,
       options: CarouselOptions(
         scrollPhysics: const BouncingScrollPhysics(
           decelerationRate: ScrollDecelerationRate.normal,
         ),
         enableInfiniteScroll: false,
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        autoPlayCurve: Curves.ease,
-        autoPlay: true,
+        // autoPlayCurve: ,
+        autoPlay: false,
         animateToClosest: true,
 
         autoPlayAnimationDuration: const Duration(seconds: 3),

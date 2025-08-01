@@ -1,5 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:danak/theme.dart';
+import 'package:danak/ui/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +14,6 @@ class TextPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: scaffoldBackground,
-
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
 

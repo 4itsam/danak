@@ -1,12 +1,12 @@
 import 'package:danak/gen/assets.gen.dart';
-import 'package:danak/models/theory_models.dart';
 import 'package:danak/pages/text_page.dart';
-import 'package:danak/theme.dart';
+import 'package:danak/ui/theme.dart';
 import 'package:danak/ui/text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:danak/models/data.dart';
 
 // ignore: must_be_immutable
 class Theory extends StatelessWidget {
@@ -14,16 +14,10 @@ class Theory extends StatelessWidget {
   final ScrollBehavior _scrollBehavior = const ScrollBehavior();
   final DragStartBehavior _dragStartBehavior = DragStartBehavior.down;
 
-  List<TheoryModels> theoryModels = [];
-
   Theory({super.key});
-  void getTheoryModels() {
-    theoryModels = TheoryModels.getTheoryModels();
-  }
 
   @override
   Widget build(BuildContext context) {
-    getTheoryModels();
     return Scaffold(
       backgroundColor: scaffoldBackground,
       appBar: AppBar(
@@ -38,7 +32,7 @@ class Theory extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverList.builder(
-              itemCount: theoryModels.length,
+              itemCount: theoryList.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(20),
@@ -46,8 +40,8 @@ class Theory extends StatelessWidget {
                     onTap: () => Get.to(
                       () => TextPage(),
                       arguments: [
-                        theoryModels[index].title,
-                        theoryModels[index].text,
+                        theoryList[index].title,
+                        theoryList[index].text,
                       ],
                       transition: Transition.fadeIn,
                       duration: const Duration(milliseconds: 200),
@@ -69,7 +63,7 @@ class Theory extends StatelessWidget {
                             top: 40,
                             right: 30,
                             child: Text(
-                              theoryModels[index].title,
+                              theoryList[index].title,
                               style: theoryBannerStyle,
                             ),
                           ),
@@ -80,7 +74,7 @@ class Theory extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.fromLTRB(6, 2, 6, 2),
                                 child: Text(
-                                  theoryModels[index].author,
+                                  theoryList[index].author,
                                   style: theoryBannerSubStyle,
                                 ),
                               ),

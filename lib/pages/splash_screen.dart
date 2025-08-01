@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/pages/main_screen.dart';
-import 'package:danak/theme.dart';
+import 'package:danak/ui/theme.dart';
 import 'package:danak/ui/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

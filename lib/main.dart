@@ -1,5 +1,5 @@
 import 'package:danak/pages/splash_screen.dart';
-import 'package:danak/theme.dart';
+import 'package:danak/ui/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -7,10 +7,9 @@ import 'package:get/get.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      statusBarColor: primaryColor,
-    ),
+    SystemUiOverlayStyle(statusBarColor: primaryColor),
   );
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

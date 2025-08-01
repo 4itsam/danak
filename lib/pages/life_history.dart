@@ -1,28 +1,25 @@
 import 'package:danak/gen/assets.gen.dart';
-import 'package:danak/models/life_history_models.dart';
 import 'package:danak/pages/text_page.dart';
-import 'package:danak/theme.dart';
+import 'package:danak/ui/theme.dart';
 import 'package:danak/ui/text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:danak/models/data.dart';
 
 // ignore: must_be_immutable
 class LifeHistory extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
   final ScrollBehavior _scrollBehavior =const ScrollBehavior();
   final DragStartBehavior _dragStartBehavior=DragStartBehavior.down;
-  List<LifeHistoryModel> lifeHistory = [];
+ 
 
   LifeHistory({super.key});
-  void getLifeHistory() {
-    lifeHistory = LifeHistoryModel.getLifeHistory();
-  }
+
 
   @override
   Widget build(BuildContext context) {
-    getLifeHistory();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -36,7 +33,7 @@ class LifeHistory extends StatelessWidget {
           dragStartBehavior: _dragStartBehavior,
           slivers: [
             SliverList.builder(
-              itemCount: lifeHistory.length,
+              itemCount: lifeList.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(20),
@@ -44,8 +41,8 @@ class LifeHistory extends StatelessWidget {
                     onTap: () => Get.to(
                       () => TextPage(),
                       arguments: [
-                        lifeHistory[index].title,
-                        lifeHistory[index].text,
+                        lifeList[index].title,
+                        lifeList[index].text,
                       ],
                       transition: Transition.fadeIn,
                       duration: const Duration(milliseconds: 200),
@@ -70,7 +67,7 @@ class LifeHistory extends StatelessWidget {
                                 style: lifeSubStyle,
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: "\n${lifeHistory[index].title}",
+                                    text: "\n${lifeList[index].title}",
                                     style: lifestyle,
                                   ),
                                 ],
