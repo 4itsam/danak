@@ -26,7 +26,7 @@ class TextPage extends StatelessWidget {
             expandedHeight: 200,
             collapsedHeight: 70,
             toolbarHeight: 70,
-            
+
             flexibleSpace: Align(
               alignment: Alignment.center,
               child: Text(
@@ -56,7 +56,7 @@ class TextPage extends StatelessWidget {
                     TypewriterAnimatedText(
                       text,
                       textStyle: bodyTextStyle,
-                      speed: const Duration(milliseconds: 40),
+                      speed: const Duration(milliseconds: 20),
                     ),
                   ],
                 ),

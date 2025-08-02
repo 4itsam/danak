@@ -10,6 +10,8 @@ Color borderColor = const Color(0xffffffff);
 Color shadowColor = const Color.fromARGB(87, 88, 88, 88);
 Color textWhiteTitle = const Color(0xffffffff);
 Color textWhiteSubTitle = const Color.fromARGB(255, 226, 226, 226);
+Color textFeildBackgroundColor = const Color.fromARGB(255, 240, 240, 240);
+Color hintTextColor = const Color.fromARGB(255, 129, 129, 129);
 
 final BoxDecoration bannerDecoration = BoxDecoration(
   border: Border.all(color: borderColor, width: 5, style: BorderStyle.solid),
@@ -163,4 +165,43 @@ final TextStyle splashTips = TextStyle(
   fontSize: 12,
   color: textWhiteSubTitle,
   fontWeight: FontWeight.w900,
+);
+
+final TextStyle appBarLoginTextStyle = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  fontSize: 26,
+  color: primaryColor,
+  fontWeight: FontWeight.w700,
+);
+
+final TextStyle hintTextStyle = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  color: hintTextColor,
+  fontSize: 12,
+);
+
+final TextStyle textFeildText = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  color: subTextBlackTitle,
+  fontSize: 14,
+);
+
+final TextStyle termsNormalStyle = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  fontSize: 12,
+  color: textBlackTitle,
+  fontWeight: FontWeight.w500,
+);
+final TextStyle termsBoldStyle = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  fontSize: 12,
+  color: primaryColor,
+  fontWeight: FontWeight.w500,
+);
+
+final TextStyle loginBottonActionStyle = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  color: textWhiteTitle,
+  fontSize: 18,
+  fontWeight: FontWeight.w700,
 );

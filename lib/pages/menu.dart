@@ -100,7 +100,7 @@ class _MenuState extends State<Menu> {
                   icon: Assets.images.rateIcon,
                   onTap: () async {
                     final Uri rateUri = Uri.parse(
-                      //! To do 
+                      //! To do
                       //change link for each market
                       "https://cafebazaar.ir/app/com.danak.da",
                     );
@@ -124,7 +124,7 @@ class _MenuState extends State<Menu> {
                   icon: Assets.images.privacyIcon,
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               socialIcons(),
               const SizedBox(height: 20),
               SvgPicture.asset(Assets.images.terms),

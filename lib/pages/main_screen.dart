@@ -56,7 +56,7 @@ class MainScreen extends StatelessWidget {
                   bottomSection(),
                   slider(tipsList),
                   const SizedBox(height: 20),
-                  socialIcons(),
+                  socialIcons(),          
                 ],
               ),
             ),
@@ -125,8 +125,8 @@ class MainScreen extends StatelessWidget {
                       text: RowSection.TextTheory,
                       onTap: () => Get.to(
                         () => Theory(),
-                        transition: Transition.fadeIn,
-                        duration: const Duration(milliseconds: 200),
+                        transition: Transition.rightToLeft,
+                        duration: const Duration(milliseconds: 300),
                       ),
                     ),
                     rowContainerGen(
@@ -134,8 +134,8 @@ class MainScreen extends StatelessWidget {
                       text: RowSection.TextHistoryLife,
                       onTap: () => Get.to(
                         () => LifeHistory(),
-                        transition: Transition.fadeIn,
-                        duration: const Duration(milliseconds: 200),
+                        transition: Transition.downToUp,
+                        duration: const Duration(milliseconds: 300),
                       ),
                     ),
                     rowContainerGen(
@@ -143,7 +143,7 @@ class MainScreen extends StatelessWidget {
                       text: RowSection.TextFacts,
                       onTap: () => Get.to(
                         () => const Facts(),
-                        transition: Transition.fadeIn,
+                        transition: Transition.leftToRight,
                         duration: const Duration(milliseconds: 200),
                       ),
                     ),
@@ -284,25 +284,37 @@ class MainScreen extends StatelessWidget {
       },
       itemCount: bannerList.length,
       options: CarouselOptions(
-        scrollPhysics: const BouncingScrollPhysics(
-          decelerationRate: ScrollDecelerationRate.normal,
-        ),
-        enableInfiniteScroll: false,
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        // autoPlayCurve: ,
-        autoPlay: false,
-        animateToClosest: true,
-
-        autoPlayAnimationDuration: const Duration(seconds: 3),
-
         initialPage: 0,
-
-        enlargeFactor: 1,
-        enlargeStrategy: CenterPageEnlargeStrategy.height,
-        disableCenter: false,
-        enlargeCenterPage: false,
         viewportFraction: 0.9,
+        enableInfiniteScroll: false,
+        autoPlay: true,
+        enlargeCenterPage: true,
+        autoPlayCurve: Curves.easeInToLinear,
+        animateToClosest: true,
       ),
     );
   }
 }
+
+
+        //! old banner settings !
+        // scrollPhysics: const BouncingScrollPhysics(
+        //   decelerationRate: ScrollDecelerationRate.normal,
+        // ),
+        // enableInfiniteScroll: false,
+        // clipBehavior: Clip.antiAlias,
+        // // autoPlayCurve: ,
+        // autoPlay: false,
+        // animateToClosest: false,
+
+        // autoPlayAnimationDuration: const Duration(seconds: 3),
+
+        // initialPage: 0,
+
+        // enlargeFactor: 1,
+
+        // disableCenter: false,
+        // enlargeCenterPage: true,
+
+        // viewportFraction: 0.8,
+      

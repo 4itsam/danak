@@ -23,15 +23,21 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
+
+
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     defaultConfig {
+        // "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        ndk {
+            abiFilters += listOf("x86_64")
+        }
         applicationId = "com.danak.da"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
-        versionCode = 1003
+        versionCode = 1006
         versionName = flutter.versionName
     }
 

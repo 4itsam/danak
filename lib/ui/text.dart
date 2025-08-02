@@ -11,10 +11,15 @@ class RowSection {
 }
 
 class LoginText {
-  static const String LoginName = "اسم و فامیل زیبات چیه؟";
-  static const String LoginMajor = "کدوم رشته ای؟";
-  static const String LoginSex = "خانمی یا آقا؟";
-  static const String LoginBotton = "ورود به برنامه";
+  static const String appBarText = "ورود";
+  static const String appBarSubText = "برای ادامه دادن مشخصات رو کامل کنید";
+  static const String loginName = "اسم و فامیل زیبات چیه؟";
+  static const String loginNameExample = "مثلا علی میری";
+  static const String loginMajor = "کدوم رشته ای؟";
+  static const String loginMajorExample = "مثلا مدیریت دولتی";
+  static const String loginSex = "خانمی یا آقا؟";
+  static const String loginBotton = "ورود به برنامه";
+
 }
 
 const String emptyPage = "در حال توسعه این قابلیت هستیم";
