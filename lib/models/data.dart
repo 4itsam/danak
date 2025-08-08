@@ -1,6 +1,9 @@
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/models/models.dart';
+import 'package:danak/pages/facts.dart';
+import 'package:danak/pages/life_history.dart';
 import 'package:danak/pages/text_page.dart';
+import 'package:danak/pages/theory.dart';
 import 'package:get/get.dart';
 
 List<Tips> tipsList = [
@@ -2091,5 +2094,35 @@ List<FactModels> factList = [
 
 یادگیری واقعی، فقط حفظ کردن نیست؛
 یادگیری واقعی یعنی تجربه کنیم، فکر کنیم، بفهمیم، و دوباره امتحان کنیم.''',
+  ),
+];
+
+List<HomeAbility> homeAbility = [
+  HomeAbility(
+    title: "نظریه ها",
+    image: Assets.images.theory,
+    onTap: () => Get.to(
+      () => Theory(),
+      transition: Transition.rightToLeft,
+      duration: const Duration(milliseconds: 300),
+    ),
+  ),
+  HomeAbility(
+    title: "زندگی نامه",
+    image: Assets.images.life,
+    onTap: () => Get.to(
+      () => LifeHistory(),
+      transition: Transition.downToUp,
+      duration: const Duration(milliseconds: 300),
+    ),
+  ),
+  HomeAbility(
+    title: "دانستنی ها",
+    image: Assets.images.fact,
+    onTap: () => Get.to(
+      () => const Facts(),
+      transition: Transition.leftToRight,
+      duration: const Duration(milliseconds: 300),
+    ),
   ),
 ];

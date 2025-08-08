@@ -44,6 +44,13 @@ class $AssetsImagesGen {
   /// File path: assets/images/fact.svg
   String get fact => 'assets/images/fact.svg';
 
+  /// File path: assets/images/factSection.svg
+  String get factSection => 'assets/images/factSection.svg';
+
+  /// File path: assets/images/femailIcon.png
+  AssetGenImage get femailIcon =>
+      const AssetGenImage('assets/images/femailIcon.png');
+
   /// File path: assets/images/fire.png
   AssetGenImage get fire => const AssetGenImage('assets/images/fire.png');
 
@@ -58,6 +65,10 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/life_reading.svg
   String get lifeReading => 'assets/images/life_reading.svg';
+
+  /// File path: assets/images/maleIcon.png
+  AssetGenImage get maleIcon =>
+      const AssetGenImage('assets/images/maleIcon.png');
 
   /// File path: assets/images/memberIcon.svg
   String get memberIcon => 'assets/images/memberIcon.svg';
@@ -104,11 +115,14 @@ class $AssetsImagesGen {
     devIcon,
     developer,
     fact,
+    factSection,
+    femailIcon,
     fire,
     github,
     instaIcon,
     life,
     lifeReading,
+    maleIcon,
     memberIcon,
     menu,
     movie,

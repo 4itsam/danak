@@ -40,3 +40,10 @@ class Tips {
 
   Tips({required this.tips});
 }
+
+class HomeAbility {
+  String title;
+  String image;
+  VoidCallback onTap;
+  HomeAbility({required this.title, required this.image, required this.onTap});
+}

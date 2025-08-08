@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_ce_flutter/adapters.dart';
 
-void main() {
+Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: primaryColor),
   );
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('userInformation');
   runApp(const MyApp());
 }
 
@@ -18,20 +22,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      title: 'Management App',
+    return ScreenUtilInit(
+      designSize: const Size(412, 917),
+      minTextAdapt: true,
+      useInheritedMediaQuery: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return const GetMaterialApp(
+          title: 'Management App',
 
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        Locale('fa'), // farsi
-      ],
-      locale: Locale("fa"),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(body: SplashScreen()),
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: [
+            Locale('fa'), // farsi
+          ],
+          locale: Locale("fa"),
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(body: SplashScreen()),
+        );
+      },
     );
   }
 }

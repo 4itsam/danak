@@ -30,10 +30,10 @@ android {
     }
 
     defaultConfig {
-        // "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
-        ndk {
-            abiFilters += listOf("x86_64")
-        }
+        // // "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        // ndk {
+        //     abiFilters += listOf("armeabi-v7a")
+        // }
         applicationId = "com.danak.da"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion

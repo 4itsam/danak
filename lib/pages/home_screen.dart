@@ -1,0 +1,343 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:danak/gen/assets.gen.dart';
+import 'package:danak/pages/facts.dart';
+import 'package:danak/pages/life_history.dart';
+import 'package:danak/pages/menu.dart';
+import 'package:danak/pages/theory.dart';
+import 'package:danak/ui/theme.dart';
+import 'package:danak/ui/text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:danak/models/data.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: scaffoldBackground,
+
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: AnimationLimiter(
+            child: Column(
+              children: AnimationConfiguration.toStaggeredList(
+                duration: const Duration(milliseconds: 900),
+                childAnimationBuilder: (widget) => SlideAnimation(
+                  duration: const Duration(milliseconds: 900),
+                  delay: const Duration(milliseconds: 200),
+
+                  child: FadeInAnimation(child: widget),
+                ),
+                children: [
+                  banner(bannerList),
+                  bottomSection(),
+                  sendMediaBotton(),
+                  contactUs(),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding sendMediaBotton() {
+    return Padding(
+      padding: EdgeInsets.all(12.r),
+      child: SizedBox(
+        height: 55.r,
+        width: double.infinity,
+        child: TextButton.icon(
+          style: TextButton.styleFrom(
+            backgroundColor: primaryColor,
+            overlayColor: textWhiteSubTitle,
+          ),
+          onPressed: () {
+            Get.bottomSheet(
+              backgroundColor: primaryColor,
+              enableDrag: true,
+              clipBehavior: Clip.antiAlias,
+              isDismissible: true,
+              isScrollControlled: true,
+              barrierColor: bottonSheetShadowColor,
+              persistent: true,
+
+              SizedBox(
+                height: 250.h,
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(30),
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        sendMediaText,
+                        style: bottonSheetTextStyle,
+                      ),
+                    ),
+                    socialIcons(socialIconsColorHome),
+                  ],
+                ),
+              ),
+            );
+          },
+          label: Text(sendMedia, style: bannerTextStyle),
+          icon: const Icon(Icons.telegram, color: Colors.white),
+        ),
+      ),
+    );
+  }
+
+  Padding contactUs() {
+    return Padding(
+      padding: EdgeInsets.all(12.r),
+      child: SizedBox(
+        height: 55.h,
+        width: double.infinity,
+        child: TextButton.icon(
+          style: TextButton.styleFrom(
+            backgroundColor: primaryColor,
+            overlayColor: textWhiteSubTitle,
+          ),
+          onPressed: () => Get.to(
+            () => const Menu(),
+            transition: Transition.size,
+            duration: const Duration(seconds: 1),
+          ),
+          label: Text(callAction, style: bannerTextStyle),
+          icon: const Icon(Icons.share_rounded, color: Colors.white),
+        ),
+      ),
+    );
+  }
+
+  Column bottomSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 25, bottom: 10),
+          child: Text(RowSection.textTitle, style: rowSectionTitle),
+        ),
+        SizedBox(
+          height: 190,
+          width: double.infinity,
+          child: Stack(
+            children: [
+              Container(
+                height: 100,
+                width: double.infinity,
+                color: primaryColor,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 25, right: 10, left: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    rowContainerGen(
+                      image: Assets.images.theory,
+                      text: RowSection.textTheory,
+                      onTap: () => Get.to(
+                        () => Theory(),
+                        transition: Transition.rightToLeft,
+                        duration: const Duration(milliseconds: 300),
+                      ),
+                    ),
+                    rowContainerGen(
+                      image: Assets.images.life,
+                      text: RowSection.textHistoryLife,
+                      onTap: () => Get.to(
+                        () => LifeHistory(),
+                        transition: Transition.downToUp,
+                        duration: const Duration(milliseconds: 300),
+                      ),
+                    ),
+                    rowContainerGen(
+                      image: Assets.images.fact,
+                      text: RowSection.textFacts,
+                      onTap: () => Get.to(
+                        () => const Facts(),
+                        transition: Transition.leftToRight,
+                        duration: const Duration(milliseconds: 200),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  GestureDetector rowContainerGen({
+    required String image,
+    required String text,
+    required onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Container(
+            height: 100,
+            width: 100,
+            decoration: rowBoxDecoration,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.asset(image),
+            ),
+          ),
+          const SizedBox(height: 12),
+          Text(text, style: rowSectionTitle),
+        ],
+      ),
+    );
+  }
+
+  CarouselSlider banner(bannerList) {
+    return CarouselSlider.builder(
+      itemBuilder: (context, index, realIndex) {
+        return GestureDetector(
+          onTap: bannerList[index].onTap,
+          child: Card(
+            color: primaryColor,
+            margin: const EdgeInsets.only(top: 20, bottom: 20),
+            elevation: 4,
+            shadowColor: shadowColor,
+            clipBehavior: Clip.antiAlias,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusGeometry.circular(20.r),
+            ),
+            child: Container(
+              height: 180.h,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: borderColor,
+                  width: 5,
+                  style: BorderStyle.solid,
+                ),
+                borderRadius: BorderRadius.circular(20.r),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(bannerList[index].image),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: shadowColor,
+                    offset: const Offset(0, 4),
+                    blurRadius: 8,
+                    spreadRadius: 0.7,
+                  ),
+                ],
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: 10,
+                    right: 10,
+                    left: 20,
+
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Card(
+                          child: SizedBox(
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 4,
+                                bottom: 4,
+                                right: 8,
+                                left: 8,
+                              ),
+                              child: Text(
+                                BannerText.authorText,
+                                style: bannerAuthorStyle,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 20.h,
+                          width: 20.w,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              scale: 1.25,
+                              image: AssetImage(Assets.images.fire.path),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 25,
+                    right: 15,
+                    child: Text.rich(
+                      TextSpan(
+                        text: bannerList[index].title,
+                        style: bannerTextStyle,
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: '\n${bannerList[index].subTitle}',
+                            style: bannersubTextStyle,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+      itemCount: bannerList.length,
+      options: CarouselOptions(
+        autoPlayAnimationDuration: const Duration(seconds: 1),
+        autoPlayInterval: const Duration(seconds: 5),
+
+        initialPage: 0,
+        viewportFraction: 0.9,
+        enableInfiniteScroll: true,
+        autoPlay: true,
+        enlargeCenterPage: false,
+        autoPlayCurve: Curves.easeInToLinear,
+        animateToClosest: true,
+      ),
+    );
+  }
+}
+
+
+        //! old banner settings !
+        // scrollPhysics: const BouncingScrollPhysics(
+        //   decelerationRate: ScrollDecelerationRate.normal,
+        // ),
+        // enableInfiniteScroll: false,
+        // clipBehavior: Clip.antiAlias,
+        // // autoPlayCurve: ,
+        // autoPlay: false,
+        // animateToClosest: false,
+
+        // autoPlayAnimationDuration: const Duration(seconds: 3),
+
+        // initialPage: 0,
+
+        // enlargeFactor: 1,
+
+        // disableCenter: false,
+        // enlargeCenterPage: true,
+
+        // viewportFraction: 0.8,
+      

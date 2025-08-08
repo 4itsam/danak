@@ -19,13 +19,14 @@ class TextPage extends StatelessWidget {
 
         slivers: [
           SliverAppBar(
-            pinned: true,
+            pinned: false,
             automaticallyImplyLeading: false,
             backgroundColor: primaryColor,
             centerTitle: true,
             expandedHeight: 200,
             collapsedHeight: 70,
             toolbarHeight: 70,
+            floating: true,
 
             flexibleSpace: Align(
               alignment: Alignment.center,

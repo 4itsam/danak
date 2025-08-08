@@ -100,9 +100,9 @@ class _MenuState extends State<Menu> {
                   icon: Assets.images.rateIcon,
                   onTap: () async {
                     final Uri rateUri = Uri.parse(
-                      //! To do
+                      //Todo
                       //change link for each market
-                      "https://cafebazaar.ir/app/com.danak.da",
+                      "https://myket.ir/app/com.danak.da",
                     );
                     if (await canLaunchUrl(rateUri)) {
                       await launchUrl(
@@ -125,7 +125,7 @@ class _MenuState extends State<Menu> {
                 ),
               ),
               const SizedBox(height: 10),
-              socialIcons(),
+              socialIcons(socialIconsColorMenu),
               const SizedBox(height: 20),
               SvgPicture.asset(Assets.images.terms),
             ],
@@ -163,7 +163,7 @@ class _MenuState extends State<Menu> {
   }
 }
 
-Row socialIcons() {
+Row socialIcons(Color color) {
   return Row(
     spacing: 20,
     mainAxisAlignment: MainAxisAlignment.center,
@@ -175,7 +175,10 @@ Row socialIcons() {
             await launchUrl(daktoUri, mode: LaunchMode.externalApplication);
           }
         },
-        child: SvgPicture.asset(Assets.images.daktoIcon),
+        child: SvgPicture.asset(
+          Assets.images.daktoIcon,
+          colorFilter: const ColorFilter.linearToSrgbGamma(),
+        ),
       ),
       GestureDetector(
         onTap: () async {
@@ -184,7 +187,9 @@ Row socialIcons() {
             await launchUrl(telegramUrl, mode: LaunchMode.externalApplication);
           }
         },
-        child: SvgPicture.asset(Assets.images.telegramIcon),
+        child: SvgPicture.asset(Assets.images.telegramIcon,
+          colorFilter: const ColorFilter.linearToSrgbGamma(),
+        ),
       ),
 
       GestureDetector(
@@ -194,7 +199,9 @@ Row socialIcons() {
             await launchUrl(instaUrl, mode: LaunchMode.externalApplication);
           }
         },
-        child: SvgPicture.asset(Assets.images.instaIcon),
+        child: SvgPicture.asset(Assets.images.instaIcon,
+          colorFilter: const ColorFilter.linearToSrgbGamma(),
+        ),
       ),
     ],
   );
