@@ -4,6 +4,7 @@ import 'package:danak/pages/facts.dart';
 import 'package:danak/pages/life_history.dart';
 import 'package:danak/pages/text_page.dart';
 import 'package:danak/pages/theory.dart';
+import 'package:danak/theme/text.dart';
 import 'package:get/get.dart';
 
 List<Tips> tipsList = [
@@ -1352,7 +1353,7 @@ Portfolio Selection: Efficient Diversification of Investments (1959) – نسخ�
 
 List<FactModels> factList = [
   FactModels(
-    title: "چگونه جنگ جهانی دوم مدیریت و روانشناسی معاصر را شکل داد",
+    title: "چگونه جنگ جهانی دوم مدیریت و روانشناسی معاصر را شکل داد؟",
     text: '''چشم‌انداز پیش از جنگ: بنیان‌های نظم و کارایی
 
 در آستانه جنگ جهانی دوم، جهان تحت سیطره منطق ماشین، ظهور تولید انبوه و اولین تلاش‌های نظام‌مند برای مدیریت علمی سازمان‌ها و ذهن انسان قرار داشت. این دوران شاهد حاکمیت پارادایم‌های مشخصی بود: در حوزه مدیریت، مکتب کلاسیک با تمرکز خشک و انعطاف‌ناپذیر بر کارایی، و در حوزه روانشناسی، چارچوب‌های رقیب و جبرگرایانه روانکاوی فرویدی و رفتارگرایی آمریکایی. این نظریه‌ها، هرچند در زمان خود انقلابی بودند، اما جهان را از طریق لنزی مکانیکی و تقلیل‌گرایانه می‌دیدند که در آن سازمان‌ها همچون ماشین‌های دقیق و انسان‌ها به مثابه اجزای قابل پیش‌بینی و کنترل در نظر گرفته می‌شدند.
@@ -2097,9 +2098,9 @@ List<FactModels> factList = [
   ),
 ];
 
-List<HomeAbility> homeAbility = [
-  HomeAbility(
-    title: "نظریه ها",
+List<AbilityFeild> abilityFeild = [
+  AbilityFeild(
+    text: RowSection.textTheory,
     image: Assets.images.theory,
     onTap: () => Get.to(
       () => Theory(),
@@ -2107,8 +2108,8 @@ List<HomeAbility> homeAbility = [
       duration: const Duration(milliseconds: 300),
     ),
   ),
-  HomeAbility(
-    title: "زندگی نامه",
+  AbilityFeild(
+    text: RowSection.textHistoryLife,
     image: Assets.images.life,
     onTap: () => Get.to(
       () => LifeHistory(),
@@ -2116,13 +2117,29 @@ List<HomeAbility> homeAbility = [
       duration: const Duration(milliseconds: 300),
     ),
   ),
-  HomeAbility(
-    title: "دانستنی ها",
+  AbilityFeild(
+    text: RowSection.textFacts,
     image: Assets.images.fact,
     onTap: () => Get.to(
       () => const Facts(),
       transition: Transition.leftToRight,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 200),
     ),
   ),
+];
+
+List<Notes> notes = [];
+
+List<Club> club = [
+
+  Club(
+    imageClub: Assets.images.shakhes.path,
+    titleClub: "انجمن علمی مدیریت دولتی دانشگاه سیستان و بلوچستان",
+  ),
+
+  Club(
+    imageClub: Assets.images.shakhes.path,
+    titleClub: "انجمن علمی مدیریت دولتی دانشگاه ولایت ایرانشهر",
+  ),
+  
 ];

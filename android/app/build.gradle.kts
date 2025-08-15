@@ -16,7 +16,7 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace = "com.danak.da"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "29.0.13599879"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -30,10 +30,10 @@ android {
     }
 
     defaultConfig {
-        // // "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
-        // ndk {
-        //     abiFilters += listOf("armeabi-v7a")
-        // }
+        // "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        ndk {
+            abiFilters += listOf("x86_64")
+        }
         applicationId = "com.danak.da"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion

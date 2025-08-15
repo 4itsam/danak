@@ -1,7 +1,7 @@
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/pages/text_page.dart';
-import 'package:danak/ui/theme.dart';
-import 'package:danak/ui/text.dart';
+import 'package:danak/theme/theme.dart';
+import 'package:danak/theme/text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,9 +43,10 @@ class _FactsState extends State<Facts> {
                   children: AnimationConfiguration.toStaggeredList(
                     duration: const Duration(milliseconds: 900),
                     childAnimationBuilder: (widget) => SlideAnimation(
-                      duration: const Duration(milliseconds: 900),
-                      delay: const Duration(milliseconds: 200),
+                      duration: const Duration(milliseconds: 1100),
+                      delay: const Duration(milliseconds: 900),
                       horizontalOffset: -500,
+                      verticalOffset: 200,
                       child: ScaleAnimation(child: widget),
                     ),
                     children: [
@@ -92,17 +93,6 @@ class _FactsState extends State<Facts> {
                                     height: 130.h,
                                   ),
                                 ),
-
-                                // Padding(
-                                //   padding: EdgeInsets.all(18.r),
-                                //   child: Center(
-                                //     child: Text(
-                                //       textAlign: TextAlign.center,
-                                //       factList[index].title,
-                                //       style: theoryBannerStyle,
-                                //     ),
-                                //   ),
-                                // ),
                               ],
                             ),
                           ),

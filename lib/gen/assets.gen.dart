@@ -41,6 +41,9 @@ class $AssetsImagesGen {
   AssetGenImage get developer =>
       const AssetGenImage('assets/images/developer.png');
 
+  /// File path: assets/images/empty.svg
+  String get empty => 'assets/images/empty.svg';
+
   /// File path: assets/images/fact.svg
   String get fact => 'assets/images/fact.svg';
 
@@ -114,6 +117,7 @@ class $AssetsImagesGen {
     danakWhite,
     devIcon,
     developer,
+    empty,
     fact,
     factSection,
     femailIcon,

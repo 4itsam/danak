@@ -1,6 +1,6 @@
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/pages/menu.dart';
-import 'package:danak/ui/theme.dart';
+import 'package:danak/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -22,23 +22,42 @@ AppBar appBar() {
   );
 }
 
+GestureDetector rowContainerGen({
+  required String image,
+  required String text,
+  required onTap,
+}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Column(
+      children: [
+        Container(
+          height: 100,
+          width: 100,
+          decoration: rowBoxDecoration,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SvgPicture.asset(image),
+          ),
+        ),
+        const SizedBox(height: 12),
+        Text(text, style: rowSectionTitle),
+      ],
+    ),
+  );
+}
 
-
-
-
-
-
-
-
-
-
-TextField textFeildGen({
+TextField textFieldGen({
   required controller,
   required text,
   required bool autofocus,
   required textInputAction,
+  required maxLength,
 }) {
   return TextField(
+    selectionControls: EmptyTextSelectionControls(),
+    keyboardAppearance: Brightness.dark,
+    maxLength: maxLength,
     canRequestFocus: true,
     textInputAction: textInputAction,
     style: fieldedTextStyle,

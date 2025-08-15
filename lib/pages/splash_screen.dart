@@ -2,23 +2,27 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/pages/login.dart';
 import 'package:danak/pages/main_screen.dart';
-import 'package:danak/ui/theme.dart';
-import 'package:danak/ui/text.dart';
+import 'package:danak/theme/theme.dart';
+import 'package:danak/theme/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hive_ce/hive.dart';
 
+// ignore: must_be_immutable
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
-
+  SplashScreen({super.key});
+  var name = Hive.box("userInformation").get('name');
+  var major = Hive.box("userInformation").get('major');
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 5), () {
-      if (Hive.box("userInformation").isEmpty) {
-        return Get.off(() => Login());
-      }else{
-        Get.off(()=>const MainScreen());
+      if (Hive.box("userInformation").isEmpty ||
+          major == null ||
+          name == null) {
+        return Get.off(() => const Login());
+      } else {
+        Get.off(() => const MainScreen());
       }
     });
     return Scaffold(

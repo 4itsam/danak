@@ -29,6 +29,12 @@ const String usbTitle =
     "معرفی دانشکده اقتصاد و علوم اداری دانشگاه سیستان و بلوچستان";
 
 //!==========menu section=================
+const String clubPartnersText = "انجمن های علمی همکار";
+const String exitText = "خروج";
+const String cancel = "انصراف و بازگشت";
+const String exitTitleText = "برای خروج از حساب کاربری اطمینان دارید؟";
+const String exitConditions =
+    "در صورت خروج از حساب کاربری، امکان استفاده از اپلیکیشن دیگر وجود نداشته و برای ورود مجدد به اپلیکیشن نیاز به ساخت مجدد حساب کاربری است.\nمشخصات شما به صورت کاملا محلی در گوشی شما ذخیره می شوند و امکان دسترسی افراد ثالث به اون ها وجود نداره";
 const String callAction = 'راه های ارتباطی';
 const String sendMedia = 'ارسال مطلب';
 const String menuAppbarText = "انجمن علمی مدیریت مالی شاخص";

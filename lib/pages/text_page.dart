@@ -1,5 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:danak/ui/theme.dart';
+import 'package:danak/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,13 +27,17 @@ class TextPage extends StatelessWidget {
             collapsedHeight: 70,
             toolbarHeight: 70,
             floating: true,
+            stretch: true,
 
             flexibleSpace: Align(
               alignment: Alignment.center,
-              child: Text(
-                title,
-                textAlign: TextAlign.center,
-                style: containerHeadStyle,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: containerHeadStyle,
+                ),
               ),
             ),
 
@@ -50,11 +54,12 @@ class TextPage extends StatelessWidget {
                 child: AnimatedTextKit(
                   isRepeatingAnimation: false,
                   repeatForever: false,
+
                   totalRepeatCount: 0,
                   displayFullTextOnTap: true,
 
                   animatedTexts: [
-                    TypewriterAnimatedText(
+                    TyperAnimatedText(
                       text,
                       textStyle: bodyTextStyle,
                       speed: const Duration(milliseconds: 20),

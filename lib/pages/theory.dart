@@ -1,7 +1,7 @@
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/pages/text_page.dart';
-import 'package:danak/ui/theme.dart';
-import 'package:danak/ui/text.dart';
+import 'package:danak/theme/theme.dart';
+import 'package:danak/theme/text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,14 +40,15 @@ class Theory extends StatelessWidget {
                   children: AnimationConfiguration.toStaggeredList(
                     duration: const Duration(milliseconds: 900),
                     childAnimationBuilder: (widget) => SlideAnimation(
-                      duration: const Duration(milliseconds: 900),
-                      delay: const Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 1100),
+                      delay: const Duration(milliseconds: 900),
                       horizontalOffset: 500,
+                      verticalOffset: 200,
                       child: ScaleAnimation(child: widget),
                     ),
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(20),
+                        padding: EdgeInsets.all(20.r),
                         child: InkWell(
                           onTap: () => Get.to(
                             () => TextPage(),

@@ -18,6 +18,11 @@ Color bottonSheetShadowColor = const Color.fromARGB(125, 34, 34, 34);
 Color unSelectedNavigationBarIndex = const Color.fromARGB(255, 66, 66, 66);
 Color socialIconsColorMenu = const Color.fromARGB(255, 26, 26, 26);
 Color socialIconsColorHome = const Color.fromARGB(255, 247, 247, 247);
+Color errorColor = const Color.fromARGB(218, 255, 17, 0);
+Color snackBarTextColor = const Color.fromARGB(255, 255, 255, 255);
+Color snackBarBorderColor = const Color(0xffffffff);
+Color cancelColor = const Color.fromARGB(255, 233, 233, 233);
+Color clubContainerColor = const Color.fromARGB(255, 71, 71, 71);
 final BoxDecoration bannerDecoration = BoxDecoration(
   border: Border.all(color: borderColor, width: 5, style: BorderStyle.solid),
   boxShadow: [
@@ -92,7 +97,7 @@ final BoxDecoration decorationBoxStyle = BoxDecoration(
 final TextStyle theoryBannerStyle = TextStyle(
   fontFamily: FontFamily.iranYekan,
   color: textWhiteTitle,
-  fontSize: 16.sp,
+  fontSize: 18.sp,
   fontWeight: FontWeight.w700,
 );
 
@@ -100,7 +105,7 @@ final TextStyle theoryBannerSubStyle = TextStyle(
   fontFamily: FontFamily.iranYekan,
   fontSize: 14.sp,
   color: primaryColor,
-  fontWeight: FontWeight.w600,
+  fontWeight: FontWeight.w500,
 );
 
 final TextStyle containerHeadStyle = TextStyle(
@@ -239,7 +244,7 @@ BoxDecoration profileDecoration = BoxDecoration(
 
 final TextStyle profileTitle = TextStyle(
   fontFamily: FontFamily.iranYekan,
-  color: subTextBlackTitle,
+  color: textBlackTitle,
   fontSize: 16.sp,
   fontWeight: FontWeight.w600,
 );
@@ -267,6 +272,72 @@ final TextStyle bottonNavigationTextStyle = TextStyle(
 final TextStyle changeInfoTextStyle = TextStyle(
   fontFamily: FontFamily.iranYekan,
   fontSize: 12.sp,
-  color: textBlackTitle,
+  color: subTextBlackTitle,
   fontWeight: FontWeight.w500,
+);
+
+final TextStyle snackBarTextStyle = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  color: snackBarTextColor,
+  fontSize: 16.sp,
+  fontWeight: FontWeight.w700,
+);
+final TextStyle snackBarSubTextStyle = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  color: snackBarTextColor,
+  fontSize: 12.sp,
+  fontWeight: FontWeight.w500,
+);
+
+final TextStyle exitTextStyle = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  fontSize: 12.sp,
+  color: textWhiteTitle,
+  fontWeight: FontWeight.w500,
+);
+
+final TextStyle exitDialogTitleStyle = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  color: textBlackTitle,
+  fontSize: 14.sp,
+  fontWeight: FontWeight.w600,
+);
+
+final TextStyle exitDialogSubTitleStyle = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  color: subTextBlackTitle,
+  fontSize: 12.sp,
+  fontWeight: FontWeight.w500,
+);
+
+final TextStyle cancelStyle = TextStyle(
+  fontFamily: FontFamily.iranYekan,
+  fontSize: 12.sp,
+  color: subTextBlackTitle,
+  fontWeight: FontWeight.w500,
+);
+
+final ButtonStyle elevatedButtonTheme = ElevatedButton.styleFrom(
+  backgroundColor: primaryColor,
+
+  overlayColor: Colors.white60,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadiusGeometry.circular(15.r),
+    side: const BorderSide(
+      color: Colors.white,
+      width: 1.5,
+      style: BorderStyle.solid,
+    ),
+  ),
+);
+
+final BoxDecoration clubContainerDecoration = BoxDecoration(
+  shape: BoxShape.rectangle,
+  color: clubContainerColor,
+  borderRadius: BorderRadius.circular(20),
+);
+
+final TextStyle clubNameTextStyle = const TextStyle(
+  fontSize: 10,
+  fontFamily: FontFamily.iranYekan,
 );

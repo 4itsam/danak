@@ -1,15 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:danak/components/components.dart';
 import 'package:danak/gen/assets.gen.dart';
-import 'package:danak/pages/facts.dart';
-import 'package:danak/pages/life_history.dart';
 import 'package:danak/pages/menu.dart';
-import 'package:danak/pages/theory.dart';
-import 'package:danak/ui/theme.dart';
-import 'package:danak/ui/text.dart';
+import 'package:danak/theme/theme.dart';
+import 'package:danak/theme/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:danak/models/data.dart';
 
@@ -20,27 +16,15 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: scaffoldBackground,
-
       body: SafeArea(
         child: SingleChildScrollView(
-          child: AnimationLimiter(
-            child: Column(
-              children: AnimationConfiguration.toStaggeredList(
-                duration: const Duration(milliseconds: 900),
-                childAnimationBuilder: (widget) => SlideAnimation(
-                  duration: const Duration(milliseconds: 900),
-                  delay: const Duration(milliseconds: 200),
-
-                  child: FadeInAnimation(child: widget),
-                ),
-                children: [
-                  banner(bannerList),
-                  bottomSection(),
-                  sendMediaBotton(),
-                  contactUs(),
-                ],
-              ),
-            ),
+          child: Column(
+            children: [
+              banner(bannerList),
+              bottomSection(),
+              sendMediaBotton(),
+              contactUs(),
+            ],
           ),
         ),
       ),
@@ -60,6 +44,8 @@ class HomeScreen extends StatelessWidget {
           ),
           onPressed: () {
             Get.bottomSheet(
+              enterBottomSheetDuration: const Duration(milliseconds: 300),
+              exitBottomSheetDuration: const Duration(seconds: 1),
               backgroundColor: primaryColor,
               enableDrag: true,
               clipBehavior: Clip.antiAlias,
@@ -126,79 +112,35 @@ class HomeScreen extends StatelessWidget {
           child: Text(RowSection.textTitle, style: rowSectionTitle),
         ),
         SizedBox(
-          height: 190,
+          height: 200.h,
           width: double.infinity,
           child: Stack(
             children: [
               Container(
-                height: 100,
+                height: 110.h,
                 width: double.infinity,
-                color: primaryColor,
+                decoration: BoxDecoration(color: primaryColor),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 25, right: 10, left: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    rowContainerGen(
-                      image: Assets.images.theory,
-                      text: RowSection.textTheory,
-                      onTap: () => Get.to(
-                        () => Theory(),
-                        transition: Transition.rightToLeft,
-                        duration: const Duration(milliseconds: 300),
-                      ),
-                    ),
-                    rowContainerGen(
-                      image: Assets.images.life,
-                      text: RowSection.textHistoryLife,
-                      onTap: () => Get.to(
-                        () => LifeHistory(),
-                        transition: Transition.downToUp,
-                        duration: const Duration(milliseconds: 300),
-                      ),
-                    ),
-                    rowContainerGen(
-                      image: Assets.images.fact,
-                      text: RowSection.textFacts,
-                      onTap: () => Get.to(
-                        () => const Facts(),
-                        transition: Transition.leftToRight,
-                        duration: const Duration(milliseconds: 200),
-                      ),
-                    ),
-                  ],
+              GridView.builder(
+                padding: EdgeInsets.only(top: 30.r),
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: abilityFeild.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 20,
                 ),
+                itemBuilder: (context, index) {
+                  return rowContainerGen(
+                    image: abilityFeild[index].image,
+                    text: abilityFeild[index].text,
+                    onTap: abilityFeild[index].onTap,
+                  );
+                },
               ),
             ],
           ),
         ),
       ],
-    );
-  }
-
-  GestureDetector rowContainerGen({
-    required String image,
-    required String text,
-    required onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Column(
-        children: [
-          Container(
-            height: 100,
-            width: 100,
-            decoration: rowBoxDecoration,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset(image),
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(text, style: rowSectionTitle),
-        ],
-      ),
     );
   }
 
@@ -318,26 +260,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-        //! old banner settings !
-        // scrollPhysics: const BouncingScrollPhysics(
-        //   decelerationRate: ScrollDecelerationRate.normal,
-        // ),
-        // enableInfiniteScroll: false,
-        // clipBehavior: Clip.antiAlias,
-        // // autoPlayCurve: ,
-        // autoPlay: false,
-        // animateToClosest: false,
-
-        // autoPlayAnimationDuration: const Duration(seconds: 3),
-
-        // initialPage: 0,
-
-        // enlargeFactor: 1,
-
-        // disableCenter: false,
-        // enlargeCenterPage: true,
-
-        // viewportFraction: 0.8,
-      

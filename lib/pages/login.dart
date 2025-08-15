@@ -1,9 +1,10 @@
+import 'package:danak/components/components.dart';
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/gen/fonts.gen.dart';
 import 'package:danak/pages/main_screen.dart';
 import 'package:danak/pages/text_page.dart';
-import 'package:danak/ui/text.dart';
-import 'package:danak/ui/theme.dart';
+import 'package:danak/theme/text.dart';
+import 'package:danak/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,7 +13,7 @@ import 'package:hive_ce/hive.dart';
 
 // ignore: must_be_immutable
 class Login extends StatefulWidget {
-  Login({super.key});
+  const Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();
@@ -23,7 +24,7 @@ class _LoginState extends State<Login> {
 
   final TextEditingController _majorController = TextEditingController();
 
-  String selectGender = 'male';
+  String selectGender = '';
   var box = Hive.box("userInformation");
 
   @override
@@ -52,11 +53,12 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         SizedBox(height: 10.h),
-                        textFeildGen(
+                        textFieldGen(
                           controller: _nameController,
                           text: LoginText.loginNameExample,
                           autofocus: true,
                           textInputAction: TextInputAction.next,
+                          maxLength: 25,
                         ),
                         SizedBox(height: 30.h),
                         Align(
@@ -67,18 +69,19 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         SizedBox(height: 10.h),
-                        textFeildGen(
+                        textFieldGen(
                           controller: _majorController,
                           text: LoginText.loginMajorExample,
                           autofocus: true,
-                          textInputAction: TextInputAction.done,
+                          textInputAction: TextInputAction.next,
+                          maxLength: 31,
                         ),
                         SizedBox(height: 30.h),
                         Align(
                           alignment: Alignment.topRight,
                           child: Text(LoginText.loginSex, style: textFeildText),
                         ),
-                        
+
                         genderBoolBox(),
                         // SizedBox(height: size.height / 4),
                         const Spacer(flex: 2),
@@ -115,33 +118,23 @@ class _LoginState extends State<Login> {
                           height: 50,
                           width: double.infinity,
                           child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: primaryColor,
-
-                              overlayColor: Colors.white60,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadiusGeometry.circular(
-                                  15.r,
-                                ),
-                                side: const BorderSide(
-                                  color: Colors.white,
-                                  width: 1.5,
-                                  style: BorderStyle.solid,
-                                ),
-                              ),
-                            ),
+                            style: elevatedButtonTheme,
                             onPressed: () {
                               final String name = _nameController.text;
                               final String major = _majorController.text;
                               final String sex = selectGender;
 
-                              if (name.isEmpty || major.isEmpty) {
-                                return;
+                              if (name.isEmpty || major.isEmpty || sex == '') {
+                                errorLoginWidget();
+                                _nameController.clear();
+                                _majorController.clear();
                               } else {
                                 box.put("name", name);
                                 box.put("major", major);
                                 box.put("sex", sex);
-                                Get.off(() => const MainScreen());
+                                _nameController.clear();
+                                _majorController.clear();
+                                Get.offAll(() => const MainScreen());
                               }
                             },
                             child: Text(
@@ -178,6 +171,7 @@ class _LoginState extends State<Login> {
             ),
             Radio<String>(
               fillColor: WidgetStatePropertyAll(primaryColor),
+              splashRadius: 30,
               value: 'male',
               groupValue: selectGender,
               onChanged: (value) {
@@ -201,6 +195,7 @@ class _LoginState extends State<Login> {
             ),
             Radio<String>(
               fillColor: WidgetStatePropertyAll(primaryColor),
+              splashRadius: 30,
               value: 'female',
               groupValue: selectGender,
               onChanged: (value) {
@@ -212,40 +207,6 @@ class _LoginState extends State<Login> {
           ],
         ),
       ],
-    );
-  }
-
-  TextField textFeildGen({
-    required controller,
-    required text,
-    required bool autofocus,
-    required textInputAction,
-  }) {
-    return TextField(
-      canRequestFocus: true,
-      textInputAction: textInputAction,
-      style: fieldedTextStyle,
-      controller: controller,
-      autofocus: autofocus,
-      decoration: InputDecoration(
-        hintText: text,
-        hintStyle: hintTextStyle,
-        fillColor: textFeildBackgroundColor,
-        filled: true,
-        alignLabelWithHint: true,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Colors.white, width: 1),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: BorderSide(color: primaryColor, width: 2),
-        ),
-      ),
     );
   }
 
@@ -264,6 +225,30 @@ class _LoginState extends State<Login> {
           ],
         ),
       ),
+    );
+  }
+
+  SnackbarController errorLoginWidget() {
+    return Get.snackbar(
+      "",
+      "",
+
+      snackStyle: SnackStyle.FLOATING,
+      backgroundColor: errorColor,
+      colorText: Colors.white,
+      titleText: Text("خطا در ورود", style: snackBarTextStyle),
+      messageText: Text(
+        "لطفا تمامی فیلد های خواسته شده رو پر کنید",
+        style: snackBarSubTextStyle,
+      ),
+      dismissDirection: DismissDirection.horizontal,
+
+      isDismissible: false,
+      shouldIconPulse: false,
+      duration: const Duration(seconds: 3),
+      barBlur: 50,
+      icon: const Icon(Icons.error, color: Colors.white),
+      snackPosition: SnackPosition.BOTTOM,
     );
   }
 }

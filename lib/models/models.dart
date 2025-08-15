@@ -47,3 +47,23 @@ class HomeAbility {
   VoidCallback onTap;
   HomeAbility({required this.title, required this.image, required this.onTap});
 }
+
+class AbilityFeild {
+  String text;
+  String image;
+  VoidCallback onTap;
+
+  AbilityFeild({required this.text, required this.image, required this.onTap});
+}
+
+class Notes {
+  int id;
+  String text;
+  Notes({required this.id, required this.text});
+}
+
+class Club {
+  String imageClub;
+  String titleClub;
+  Club({required this.imageClub, required this.titleClub});
+}

@@ -1,7 +1,7 @@
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/pages/text_page.dart';
-import 'package:danak/ui/theme.dart';
-import 'package:danak/ui/text.dart';
+import 'package:danak/theme/theme.dart';
+import 'package:danak/theme/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -84,6 +84,7 @@ class _MenuState extends State<Menu> {
                     final Uri githubUri = Uri.parse(
                       "https://github.com/4itsam/danak",
                     );
+
                     if (await canLaunchUrl(githubUri)) {
                       await launchUrl(
                         githubUri,
@@ -187,7 +188,8 @@ Row socialIcons(Color color) {
             await launchUrl(telegramUrl, mode: LaunchMode.externalApplication);
           }
         },
-        child: SvgPicture.asset(Assets.images.telegramIcon,
+        child: SvgPicture.asset(
+          Assets.images.telegramIcon,
           colorFilter: const ColorFilter.linearToSrgbGamma(),
         ),
       ),
@@ -199,7 +201,8 @@ Row socialIcons(Color color) {
             await launchUrl(instaUrl, mode: LaunchMode.externalApplication);
           }
         },
-        child: SvgPicture.asset(Assets.images.instaIcon,
+        child: SvgPicture.asset(
+          Assets.images.instaIcon,
           colorFilter: const ColorFilter.linearToSrgbGamma(),
         ),
       ),
