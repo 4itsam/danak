@@ -57,9 +57,9 @@ class AbilityFeild {
 }
 
 class Notes {
-  int id;
   String text;
-  Notes({required this.id, required this.text});
+  Notes({required this.text});
+  
 }
 
 class Club {

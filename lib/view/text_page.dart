@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,15 +14,17 @@ class TextPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: scaffoldBackground,
+      backgroundColor: SolidColors.scaffoldBackground,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
-
+        shrinkWrap: true,
         slivers: [
           SliverAppBar(
-            pinned: false,
+            pinned: true,
+            excludeHeaderSemantics: true,
+            forceElevated: true,
             automaticallyImplyLeading: false,
-            backgroundColor: primaryColor,
+            backgroundColor: SolidColors.primaryColor,
             centerTitle: true,
             expandedHeight: 200,
             collapsedHeight: 70,
@@ -36,7 +39,7 @@ class TextPage extends StatelessWidget {
                 child: Text(
                   title,
                   textAlign: TextAlign.center,
-                  style: containerHeadStyle,
+                  style: AppTextStyle.containerHeadStyle,
                 ),
               ),
             ),
@@ -61,7 +64,7 @@ class TextPage extends StatelessWidget {
                   animatedTexts: [
                     TyperAnimatedText(
                       text,
-                      textStyle: bodyTextStyle,
+                      textStyle: AppTextStyle.bodyTextStyle,
                       speed: const Duration(milliseconds: 20),
                     ),
                   ],

@@ -1,20 +1,13 @@
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/models/models.dart';
-import 'package:danak/pages/facts.dart';
-import 'package:danak/pages/life_history.dart';
-import 'package:danak/pages/text_page.dart';
-import 'package:danak/pages/theory.dart';
-import 'package:danak/theme/text.dart';
+import 'package:danak/view/ai.dart';
+import 'package:danak/view/facts.dart';
+import 'package:danak/view/life_history.dart';
+import 'package:danak/view/note.dart';
+import 'package:danak/view/text_page.dart';
+import 'package:danak/view/theory.dart';
+import 'package:danak/theme/app_strings.dart';
 import 'package:get/get.dart';
-
-List<Tips> tipsList = [
-  Tips(tips: 'برای نمایش سریع متن\nبر روی آن کلیک کنید'),
-  Tips(tips: "همواره پذیرای انتقادات و پیشنهادات\nشما عزیزان هستیم"),
-  Tips(
-    tips:
-        "در صورت تمایل به همکاری میتوانید\nاز طریق تلگرام با ما در ارتباط باشید",
-  ),
-];
 
 List<BannerModels> bannerList = [
   //usb
@@ -26,7 +19,7 @@ List<BannerModels> bannerList = [
       duration: const Duration(milliseconds: 300),
     ),
 
-    title: "درباره دانشکده مدیریت و اقتصاد بیشتر بدانید",
+    title: BannerText.usbTitle,
     subTitle: "محیط، اساتید و کلاس ها",
     image: Assets.images.usb.path,
     text: '''
@@ -2099,6 +2092,7 @@ List<FactModels> factList = [
 ];
 
 List<AbilityFeild> abilityFeild = [
+  // <<<<<<[Theory]>>>>>>
   AbilityFeild(
     text: RowSection.textTheory,
     image: Assets.images.theory,
@@ -2108,6 +2102,7 @@ List<AbilityFeild> abilityFeild = [
       duration: const Duration(milliseconds: 300),
     ),
   ),
+  // <<<<<<[LifeHistory]>>>>>>
   AbilityFeild(
     text: RowSection.textHistoryLife,
     image: Assets.images.life,
@@ -2117,6 +2112,7 @@ List<AbilityFeild> abilityFeild = [
       duration: const Duration(milliseconds: 300),
     ),
   ),
+  // <<<<<<[Facts]>>>>>>
   AbilityFeild(
     text: RowSection.textFacts,
     image: Assets.images.fact,
@@ -2126,12 +2122,39 @@ List<AbilityFeild> abilityFeild = [
       duration: const Duration(milliseconds: 200),
     ),
   ),
+  // <<<<<<[Ai]>>>>>>
+  AbilityFeild(
+    text: RowSection.textAi,
+    image: Assets.images.ai,
+    onTap: () => Get.to(
+      () => Ai(),
+      transition: Transition.downToUp,
+      duration: const Duration(milliseconds: 400),
+    ),
+  ),
+  // <<<<<<[Note]>>>>>>
+  AbilityFeild(
+    text: RowSection.textNote,
+    image: Assets.images.note,
+    onTap: () => Get.to(
+      () => const Note(),
+      transition: Transition.downToUp,
+      duration: const Duration(milliseconds: 400),
+    ),
+  ),
+  // <<<<<<[Markets]>>>>>>
+  AbilityFeild(
+    text: RowSection.textMoney,
+    image: Assets.images.markets,
+    onTap: () => Get.to(
+      () => Ai(),
+      transition: Transition.downToUp,
+      duration: const Duration(milliseconds: 400),
+    ),
+  ),
 ];
 
-List<Notes> notes = [];
-
 List<Club> club = [
-
   Club(
     imageClub: Assets.images.shakhes.path,
     titleClub: "انجمن علمی مدیریت دولتی دانشگاه سیستان و بلوچستان",
@@ -2141,5 +2164,4 @@ List<Club> club = [
     imageClub: Assets.images.shakhes.path,
     titleClub: "انجمن علمی مدیریت دولتی دانشگاه ولایت ایرانشهر",
   ),
-  
 ];

@@ -1,9 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:danak/gen/assets.gen.dart';
-import 'package:danak/pages/login.dart';
-import 'package:danak/pages/main_screen.dart';
+import 'package:danak/view/login.dart';
+import 'package:danak/view/main_screen.dart';
+import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';
-import 'package:danak/theme/text.dart';
+import 'package:danak/theme/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -12,10 +13,13 @@ import 'package:hive_ce/hive.dart';
 // ignore: must_be_immutable
 class SplashScreen extends StatelessWidget {
   SplashScreen({super.key});
+  // Get Box values
   var name = Hive.box("userInformation").get('name');
   var major = Hive.box("userInformation").get('major');
+  
   @override
   Widget build(BuildContext context) {
+    //! Check If User Login
     Future.delayed(const Duration(seconds: 5), () {
       if (Hive.box("userInformation").isEmpty ||
           major == null ||
@@ -26,26 +30,32 @@ class SplashScreen extends StatelessWidget {
       }
     });
     return Scaffold(
-      backgroundColor: primaryColor,
+
+      backgroundColor: SolidColors.primaryColor,
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(flex: 2),
+              //? Danak Logo
               SvgPicture.asset(Assets.images.danakWhite, width: 80, height: 80),
               const Spacer(flex: 2),
+
+              //? Animated Hint Text
               AnimatedTextKit(
                 isRepeatingAnimation: false,
 
                 animatedTexts: [
                   TyperAnimatedText(
                     tipsText,
-                    textStyle: splashTips,
+                    textStyle: AppTextStyle.splashTips,
                     speed: const Duration(milliseconds: 70),
                   ),
                 ],
               ),
+
+              //? Logos
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Row(

@@ -1,39 +1,43 @@
 import 'package:danak/gen/assets.gen.dart';
-import 'package:danak/pages/text_page.dart';
+import 'package:danak/view/text_page.dart';
 import 'package:danak/theme/theme.dart';
-import 'package:danak/theme/text.dart';
+import 'package:danak/theme/app_strings.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:danak/models/data.dart';
 
-// ignore: must_be_immutable
-class LifeHistory extends StatelessWidget {
+class Facts extends StatefulWidget {
+  const Facts({super.key});
+  @override
+  State<Facts> createState() => _FactsState();
+}
+
+class _FactsState extends State<Facts> {
   final ScrollController _scrollController = ScrollController();
   final ScrollBehavior _scrollBehavior = const ScrollBehavior();
   final DragStartBehavior _dragStartBehavior = DragStartBehavior.down;
-
-  LifeHistory({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(RowSection.textFacts, style: AppTextStyle.rowSectionTitle),
         automaticallyImplyLeading: false,
-        title: Text(RowSection.textHistoryLife, style: rowSectionTitle),
       ),
       body: SafeArea(
         child: CustomScrollView(
           controller: _scrollController,
-          physics: const BouncingScrollPhysics(),
-          scrollBehavior: _scrollBehavior,
           dragStartBehavior: _dragStartBehavior,
+          scrollBehavior: _scrollBehavior,
+
+          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverList.builder(
-              itemCount: lifeList.length,
+              itemCount: factList.length,
               itemBuilder: (context, index) {
                 return Column(
                   children: AnimationConfiguration.toStaggeredList(
@@ -41,7 +45,8 @@ class LifeHistory extends StatelessWidget {
                     childAnimationBuilder: (widget) => SlideAnimation(
                       duration: const Duration(milliseconds: 1100),
                       delay: const Duration(milliseconds: 900),
-                      verticalOffset: 500,
+                      horizontalOffset: -500,
+                      verticalOffset: 200,
                       child: ScaleAnimation(child: widget),
                     ),
                     children: [
@@ -51,8 +56,8 @@ class LifeHistory extends StatelessWidget {
                           onTap: () => Get.to(
                             () => TextPage(),
                             arguments: [
-                              lifeList[index].title,
-                              lifeList[index].text,
+                              factList[index].title,
+                              factList[index].text,
                             ],
                             fullscreenDialog: true,
                             preventDuplicates: true,
@@ -63,30 +68,29 @@ class LifeHistory extends StatelessWidget {
                           child: Container(
                             height: 180.h,
                             width: double.infinity,
-                            decoration: decorationBoxStyle,
+                            decoration: AppBoxDecoration.decorationBoxStyle,
                             child: Stack(
                               children: [
                                 Positioned(
-                                  bottom: 0.r,
-                                  left: 20.r,
-                                  child: SvgPicture.asset(
-                                    Assets.images.lifeReading,
+                                  top: 40.r,
+                                  right: 20.r,
+                                  child: SizedBox(
+                                    width: 200.w,
+                                    child: Text(
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 3,
+                                      textAlign: TextAlign.start,
+                                      factList[index].title,
+                                      style: AppTextStyle.theoryBannerStyle,
+                                    ),
                                   ),
                                 ),
                                 Positioned(
-                                  top: 50.r,
-                                  right: 40.r,
-                                  child: Text.rich(
-                                    TextSpan(
-                                      text: "زندگی نامه",
-                                      style: lifeSubStyle,
-                                      children: <TextSpan>[
-                                        TextSpan(
-                                          text: "\n${lifeList[index].title}",
-                                          style: lifestyle,
-                                        ),
-                                      ],
-                                    ),
+                                  bottom: 10.r,
+                                  left: 30.r,
+                                  child: SvgPicture.asset(
+                                    Assets.images.factSection,
+                                    height: 130.h,
                                   ),
                                 ),
                               ],

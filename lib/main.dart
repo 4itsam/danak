@@ -1,5 +1,5 @@
-import 'package:danak/pages/splash_screen.dart';
-import 'package:danak/theme/theme.dart';
+import 'package:danak/view/splash_screen.dart';
+import 'package:danak/theme/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -8,13 +8,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 
 Future<void> main() async {
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(statusBarColor: primaryColor),
-  );
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle());
   WidgetsFlutterBinding.ensureInitialized();
+  //initialize Hive Boxes
   await Hive.initFlutter();
+
   await Hive.openBox('userInformation');
-  await Hive.openBox('notes');
+  await Hive.openBox("notes");
   runApp(const MyApp());
 }
 
@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ScreenUtilInit Responsive Package
     return ScreenUtilInit(
       designSize: const Size(412, 917),
       minTextAdapt: true,
@@ -30,8 +31,9 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
-          title: 'Management App',
-
+          
+          title: AppName.appName,
+          // Set Persian language To All App
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,

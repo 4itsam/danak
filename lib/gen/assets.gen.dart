@@ -15,6 +15,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/Usb.jpg
   AssetGenImage get usb => const AssetGenImage('assets/images/Usb.jpg');
 
+  /// File path: assets/images/ai.svg
+  String get ai => 'assets/images/ai.svg';
+
   /// File path: assets/images/club.png
   AssetGenImage get club => const AssetGenImage('assets/images/club.png');
 
@@ -73,6 +76,9 @@ class $AssetsImagesGen {
   AssetGenImage get maleIcon =>
       const AssetGenImage('assets/images/maleIcon.png');
 
+  /// File path: assets/images/markets.svg
+  String get markets => 'assets/images/markets.svg';
+
   /// File path: assets/images/memberIcon.svg
   String get memberIcon => 'assets/images/memberIcon.svg';
 
@@ -81,6 +87,12 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/movie.png
   AssetGenImage get movie => const AssetGenImage('assets/images/movie.png');
+
+  /// File path: assets/images/note.svg
+  String get note => 'assets/images/note.svg';
+
+  /// File path: assets/images/pattern.svg
+  String get pattern => 'assets/images/pattern.svg';
 
   /// File path: assets/images/privacyIcon.svg
   String get privacyIcon => 'assets/images/privacyIcon.svg';
@@ -109,6 +121,7 @@ class $AssetsImagesGen {
   /// List of all assets
   List<dynamic> get values => [
     usb,
+    ai,
     club,
     dakto,
     daktoIcon,
@@ -127,9 +140,12 @@ class $AssetsImagesGen {
     life,
     lifeReading,
     maleIcon,
+    markets,
     memberIcon,
     menu,
     movie,
+    note,
+    pattern,
     privacyIcon,
     rateIcon,
     shakhes,

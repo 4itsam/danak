@@ -1,7 +1,7 @@
 import 'package:danak/gen/assets.gen.dart';
-import 'package:danak/pages/text_page.dart';
+import 'package:danak/view/text_page.dart';
 import 'package:danak/theme/theme.dart';
-import 'package:danak/theme/text.dart';
+import 'package:danak/theme/app_strings.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,30 +11,29 @@ import 'package:get/get.dart';
 import 'package:danak/models/data.dart';
 
 // ignore: must_be_immutable
-class Theory extends StatelessWidget {
+class LifeHistory extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
   final ScrollBehavior _scrollBehavior = const ScrollBehavior();
   final DragStartBehavior _dragStartBehavior = DragStartBehavior.down;
 
-  Theory({super.key});
+  LifeHistory({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: scaffoldBackground,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(RowSection.textTheory, style: rowSectionTitle),
+        title: Text(RowSection.textHistoryLife, style: AppTextStyle.rowSectionTitle),
       ),
       body: SafeArea(
         child: CustomScrollView(
           controller: _scrollController,
-          dragStartBehavior: _dragStartBehavior,
-          scrollBehavior: _scrollBehavior,
           physics: const BouncingScrollPhysics(),
+          scrollBehavior: _scrollBehavior,
+          dragStartBehavior: _dragStartBehavior,
           slivers: [
             SliverList.builder(
-              itemCount: theoryList.length,
+              itemCount: lifeList.length,
               itemBuilder: (context, index) {
                 return Column(
                   children: AnimationConfiguration.toStaggeredList(
@@ -42,8 +41,7 @@ class Theory extends StatelessWidget {
                     childAnimationBuilder: (widget) => SlideAnimation(
                       duration: const Duration(milliseconds: 1100),
                       delay: const Duration(milliseconds: 900),
-                      horizontalOffset: 500,
-                      verticalOffset: 200,
+                      verticalOffset: 500,
                       child: ScaleAnimation(child: widget),
                     ),
                     children: [
@@ -53,8 +51,8 @@ class Theory extends StatelessWidget {
                           onTap: () => Get.to(
                             () => TextPage(),
                             arguments: [
-                              theoryList[index].title,
-                              theoryList[index].text,
+                              lifeList[index].title,
+                              lifeList[index].text,
                             ],
                             fullscreenDialog: true,
                             preventDuplicates: true,
@@ -65,39 +63,29 @@ class Theory extends StatelessWidget {
                           child: Container(
                             height: 180.h,
                             width: double.infinity,
-                            decoration: decorationBoxStyle,
+                            decoration: AppBoxDecoration.decorationBoxStyle,
                             child: Stack(
                               children: [
                                 Positioned(
-                                  bottom: 0,
-                                  left: 0,
+                                  bottom: 0.r,
+                                  left: 20.r,
                                   child: SvgPicture.asset(
-                                    Assets.images.theoryMountain,
+                                    Assets.images.lifeReading,
                                   ),
                                 ),
                                 Positioned(
-                                  top: 40.r,
-                                  right: 30.r,
-                                  child: Text(
-                                    theoryList[index].title,
-                                    style: theoryBannerStyle,
-                                  ),
-                                ),
-                                Positioned(
-                                  bottom: 40.r,
-                                  right: 25.r,
-                                  child: Card(
-                                    child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                        6,
-                                        2,
-                                        6,
-                                        2,
-                                      ),
-                                      child: Text(
-                                        theoryList[index].author,
-                                        style: theoryBannerSubStyle,
-                                      ),
+                                  top: 50.r,
+                                  right: 40.r,
+                                  child: Text.rich(
+                                    TextSpan(
+                                      text: "زندگی نامه",
+                                      style: AppTextStyle.lifeSubStyle,
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: "\n${lifeList[index].title}",
+                                          style: AppTextStyle.lifestyle,
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),

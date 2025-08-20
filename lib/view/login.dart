@@ -1,9 +1,10 @@
 import 'package:danak/components/components.dart';
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/gen/fonts.gen.dart';
-import 'package:danak/pages/main_screen.dart';
-import 'package:danak/pages/text_page.dart';
-import 'package:danak/theme/text.dart';
+import 'package:danak/view/main_screen.dart';
+import 'package:danak/view/text_page.dart';
+import 'package:danak/theme/app_strings.dart';
+import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,19 +21,21 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  //! TextFeild Controllers
   final TextEditingController _nameController = TextEditingController();
-
   final TextEditingController _majorController = TextEditingController();
-
   String selectGender = '';
+
+  //! Initialize Box
   var box = Hive.box("userInformation");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: scaffoldBackground,
+      backgroundColor: SolidColors.scaffoldBackground,
 
       body: SafeArea(
+        //! layout Builder for a Responsive Screen When KeyBoard Show UP
         child: LayoutBuilder(
           builder: (context, constraints) {
             return SingleChildScrollView(
@@ -49,10 +52,12 @@ class _LoginState extends State<Login> {
                           alignment: Alignment.topRight,
                           child: Text(
                             LoginText.loginName,
-                            style: textFeildText,
+                            style: AppTextStyle.textFeildText,
                           ),
                         ),
                         SizedBox(height: 10.h),
+
+                        //! Name TextFeild
                         textFieldGen(
                           controller: _nameController,
                           text: LoginText.loginNameExample,
@@ -65,10 +70,12 @@ class _LoginState extends State<Login> {
                           alignment: Alignment.topRight,
                           child: Text(
                             LoginText.loginMajor,
-                            style: textFeildText,
+                            style: AppTextStyle.textFeildText,
                           ),
                         ),
                         SizedBox(height: 10.h),
+
+                        //! Major TextFeild
                         textFieldGen(
                           controller: _majorController,
                           text: LoginText.loginMajorExample,
@@ -77,35 +84,44 @@ class _LoginState extends State<Login> {
                           maxLength: 31,
                         ),
                         SizedBox(height: 30.h),
+
+                        
                         Align(
                           alignment: Alignment.topRight,
-                          child: Text(LoginText.loginSex, style: textFeildText),
+                          child: Text(
+                            LoginText.loginSex,
+                            style: AppTextStyle.textFeildText,
+                          ),
                         ),
-
+                        //! Gender Radio Button
                         genderBoolBox(),
-                        // SizedBox(height: size.height / 4),
                         const Spacer(flex: 2),
-
+                        
                         SvgPicture.asset(Assets.images.terms),
                         SizedBox(height: 20.h),
+
+                        //! Terms & Privacy Policy
                         SizedBox(
                           width: 250.w,
                           child: GestureDetector(
                             onTap: () => Get.to(
                               () => TextPage(),
-                              arguments: [privacy, privacyText],
+                              arguments: [
+                                MenuText.privacy,
+                                MenuText.privacyText,
+                              ],
                               transition: Transition.fade,
                             ),
                             child: Text.rich(
                               textAlign: TextAlign.center,
                               TextSpan(
                                 text: "با ورود به برنامه با ",
-                                style: termsNormalStyle,
+                                style: AppTextStyle.termsNormalStyle,
                                 children: <TextSpan>[
                                   TextSpan(
                                     text:
                                         "قوانین استفاده از اپلیکیشن و حریم خصوصی ",
-                                    style: termsBoldStyle,
+                                    style: AppTextStyle.termsBoldStyle,
                                   ),
                                   const TextSpan(text: "موافقت می کنید"),
                                 ],
@@ -114,11 +130,13 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         SizedBox(height: 20.h),
+
+                        //! Summit Button
                         SizedBox(
-                          height: 50,
+                          height: 50.h,
                           width: double.infinity,
                           child: ElevatedButton(
-                            style: elevatedButtonTheme,
+                            style: AppBoxDecoration.elevatedButtonTheme,
                             onPressed: () {
                               final String name = _nameController.text;
                               final String major = _majorController.text;
@@ -139,7 +157,7 @@ class _LoginState extends State<Login> {
                             },
                             child: Text(
                               LoginText.loginBotton,
-                              style: loginBottonActionStyle,
+                              style: AppTextStyle.loginBottonActionStyle,
                             ),
                           ),
                         ),
@@ -164,13 +182,13 @@ class _LoginState extends State<Login> {
             Text(
               'آقا',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontFamily: FontFamily.iranYekan,
-                color: subTextBlackTitle,
+                color: SolidColors.subTextBlackTitle,
               ),
             ),
             Radio<String>(
-              fillColor: WidgetStatePropertyAll(primaryColor),
+              fillColor: WidgetStatePropertyAll(SolidColors.primaryColor),
               splashRadius: 30,
               value: 'male',
               groupValue: selectGender,
@@ -188,14 +206,14 @@ class _LoginState extends State<Login> {
             Text(
               "خانم",
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontFamily: FontFamily.iranYekan,
-                color: subTextBlackTitle,
+                color: SolidColors.subTextBlackTitle,
               ),
             ),
             Radio<String>(
-              fillColor: WidgetStatePropertyAll(primaryColor),
-              splashRadius: 30,
+              fillColor: WidgetStatePropertyAll(SolidColors.primaryColor),
+              splashRadius: 30.r,
               value: 'female',
               groupValue: selectGender,
               onChanged: (value) {
@@ -216,11 +234,11 @@ class _LoginState extends State<Login> {
       child: Text.rich(
         TextSpan(
           text: LoginText.appBarText,
-          style: appBarLoginTitleStyle,
+          style: AppTextStyle.appBarLoginTitleStyle,
           children: <TextSpan>[
             TextSpan(
               text: '\n${LoginText.appBarSubText}',
-              style: appBarLoginSubTitleStyle,
+              style: AppTextStyle.appBarLoginSubTitleStyle,
             ),
           ],
         ),
@@ -234,12 +252,12 @@ class _LoginState extends State<Login> {
       "",
 
       snackStyle: SnackStyle.FLOATING,
-      backgroundColor: errorColor,
+      backgroundColor: SolidColors.errorColor,
       colorText: Colors.white,
-      titleText: Text("خطا در ورود", style: snackBarTextStyle),
+      titleText: Text("خطا در ورود", style: AppTextStyle.snackBarTextStyle),
       messageText: Text(
         "لطفا تمامی فیلد های خواسته شده رو پر کنید",
-        style: snackBarSubTextStyle,
+        style: AppTextStyle.snackBarSubTextStyle,
       ),
       dismissDirection: DismissDirection.horizontal,
 

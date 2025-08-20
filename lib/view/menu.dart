@@ -1,7 +1,8 @@
 import 'package:danak/gen/assets.gen.dart';
-import 'package:danak/pages/text_page.dart';
+import 'package:danak/view/text_page.dart';
+import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';
-import 'package:danak/theme/text.dart';
+import 'package:danak/theme/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -28,12 +29,12 @@ class _MenuState extends State<Menu> {
             ),
             automaticallyImplyLeading: false,
             centerTitle: true,
-            backgroundColor: primaryColor,
+            backgroundColor: SolidColors.primaryColor,
             toolbarHeight: 310,
             title: Column(
               children: [
                 Image.asset(Assets.images.danakBig.path),
-                Text(menuAppbarText, style: menuTitle),
+                Text(MenuText.menuAppbarText, style: AppTextStyle.menuTitle),
               ],
             ),
           ),
@@ -48,7 +49,7 @@ class _MenuState extends State<Menu> {
                     Get.dialog(
                       transitionCurve: Curves.easeIn,
                       AlertDialog(
-                        backgroundColor: primaryColor,
+                        backgroundColor: SolidColors.primaryColor,
                         content: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -56,12 +57,12 @@ class _MenuState extends State<Menu> {
                             const SizedBox(width: 10),
                             Text.rich(
                               TextSpan(
-                                text: devName,
-                                style: devTextStyle,
+                                text: MenuText.devName,
+                                style: AppTextStyle.devTextStyle,
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: "\n$devAbility",
-                                    style: devSubTextStyle,
+                                    text: "\n${MenuText.devAbility}",
+                                    style: AppTextStyle.devSubTextStyle,
                                   ),
                                 ],
                               ),
@@ -71,14 +72,14 @@ class _MenuState extends State<Menu> {
                       ),
                     );
                   },
-                  text: dev,
+                  text: MenuText.dev,
                   icon: Assets.images.devIcon,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
                 child: textButton(
-                  text: github,
+                  text: MenuText.github,
                   icon: Assets.images.github,
                   onTap: () async {
                     final Uri githubUri = Uri.parse(
@@ -97,7 +98,7 @@ class _MenuState extends State<Menu> {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
                 child: textButton(
-                  text: rate,
+                  text: MenuText.rate,
                   icon: Assets.images.rateIcon,
                   onTap: () async {
                     final Uri rateUri = Uri.parse(
@@ -119,14 +120,14 @@ class _MenuState extends State<Menu> {
                 child: textButton(
                   onTap: () => Get.to(
                     () => TextPage(),
-                    arguments: [privacy, privacyText],
+                    arguments: [MenuText.privacy, MenuText.privacyText],
                   ),
-                  text: privacy,
+                  text: MenuText.privacy,
                   icon: Assets.images.privacyIcon,
                 ),
               ),
               const SizedBox(height: 10),
-              socialIcons(socialIconsColorMenu),
+              socialIcons(SolidColors.socialIconsColorMenu),
               const SizedBox(height: 20),
               SvgPicture.asset(Assets.images.terms),
             ],
@@ -148,13 +149,13 @@ class _MenuState extends State<Menu> {
       child: Container(
         height: 54,
         width: double.infinity,
-        decoration: textMenuButtonStyle,
+        decoration: AppBoxDecoration.textMenuButtonStyle,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(text, style: menuTitle),
+              Text(text, style: AppTextStyle.menuTitle),
               SvgPicture.asset(icon),
             ],
           ),

@@ -1,26 +1,8 @@
-import 'package:danak/gen/assets.gen.dart';
-import 'package:danak/pages/menu.dart';
+import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-
-AppBar appBar() {
-  return AppBar(
-    centerTitle: true,
-    title: SvgPicture.asset(Assets.images.danakColor, height: 40, width: 40),
-    leading: IconButton(
-      onPressed: () {
-        Get.to(
-          () => const Menu(),
-          transition: Transition.size,
-          duration: const Duration(seconds: 1),
-        );
-      },
-      icon: SvgPicture.asset(Assets.images.menu),
-    ),
-  );
-}
 
 GestureDetector rowContainerGen({
   required String image,
@@ -32,16 +14,16 @@ GestureDetector rowContainerGen({
     child: Column(
       children: [
         Container(
-          height: 100,
-          width: 100,
-          decoration: rowBoxDecoration,
+          height: 90.h,
+          width: 90.w,
+          decoration: AppBoxDecoration.rowBoxDecoration,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: SvgPicture.asset(image),
           ),
         ),
         const SizedBox(height: 12),
-        Text(text, style: rowSectionTitle),
+        Text(text, style: AppTextStyle.rowSectionTitle),
       ],
     ),
   );
@@ -60,13 +42,13 @@ TextField textFieldGen({
     maxLength: maxLength,
     canRequestFocus: true,
     textInputAction: textInputAction,
-    style: fieldedTextStyle,
+    style: AppTextStyle.fieldedTextStyle,
     controller: controller,
     autofocus: autofocus,
     decoration: InputDecoration(
       hintText: text,
-      hintStyle: hintTextStyle,
-      fillColor: textFeildBackgroundColor,
+      hintStyle: AppTextStyle.hintTextStyle,
+      fillColor: SolidColors.textFeildBackgroundColor,
       filled: true,
       alignLabelWithHint: true,
       border: OutlineInputBorder(
@@ -79,7 +61,7 @@ TextField textFieldGen({
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(18),
-        borderSide: BorderSide(color: primaryColor, width: 2),
+        borderSide: BorderSide(color: SolidColors.primaryColor, width: 2),
       ),
     ),
   );

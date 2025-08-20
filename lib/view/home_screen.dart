@@ -1,103 +1,25 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:danak/components/components.dart';
 import 'package:danak/gen/assets.gen.dart';
-import 'package:danak/pages/menu.dart';
+import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';
-import 'package:danak/theme/text.dart';
+import 'package:danak/theme/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:danak/models/data.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: scaffoldBackground,
+      backgroundColor: SolidColors.scaffoldBackground,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              banner(bannerList),
-              bottomSection(),
-              sendMediaBotton(),
-              contactUs(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Padding sendMediaBotton() {
-    return Padding(
-      padding: EdgeInsets.all(12.r),
-      child: SizedBox(
-        height: 55.r,
-        width: double.infinity,
-        child: TextButton.icon(
-          style: TextButton.styleFrom(
-            backgroundColor: primaryColor,
-            overlayColor: textWhiteSubTitle,
-          ),
-          onPressed: () {
-            Get.bottomSheet(
-              enterBottomSheetDuration: const Duration(milliseconds: 300),
-              exitBottomSheetDuration: const Duration(seconds: 1),
-              backgroundColor: primaryColor,
-              enableDrag: true,
-              clipBehavior: Clip.antiAlias,
-              isDismissible: true,
-              isScrollControlled: true,
-              barrierColor: bottonSheetShadowColor,
-              persistent: true,
-
-              SizedBox(
-                height: 250.h,
-                width: double.infinity,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(30),
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        sendMediaText,
-                        style: bottonSheetTextStyle,
-                      ),
-                    ),
-                    socialIcons(socialIconsColorHome),
-                  ],
-                ),
-              ),
-            );
-          },
-          label: Text(sendMedia, style: bannerTextStyle),
-          icon: const Icon(Icons.telegram, color: Colors.white),
-        ),
-      ),
-    );
-  }
-
-  Padding contactUs() {
-    return Padding(
-      padding: EdgeInsets.all(12.r),
-      child: SizedBox(
-        height: 55.h,
-        width: double.infinity,
-        child: TextButton.icon(
-          style: TextButton.styleFrom(
-            backgroundColor: primaryColor,
-            overlayColor: textWhiteSubTitle,
-          ),
-          onPressed: () => Get.to(
-            () => const Menu(),
-            transition: Transition.size,
-            duration: const Duration(seconds: 1),
-          ),
-          label: Text(callAction, style: bannerTextStyle),
-          icon: const Icon(Icons.share_rounded, color: Colors.white),
+          child: Column(children: [banner(bannerList), bottomSection()]),
         ),
       ),
     );
@@ -109,33 +31,48 @@ class HomeScreen extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(right: 25, bottom: 10),
-          child: Text(RowSection.textTitle, style: rowSectionTitle),
+          child: Text(
+            RowSection.textTitle,
+            style: AppTextStyle.rowSectionTitle,
+          ),
         ),
         SizedBox(
-          height: 200.h,
+          height: 400.h,
           width: double.infinity,
           child: Stack(
             children: [
               Container(
-                height: 110.h,
+                height: 90.h,
                 width: double.infinity,
-                decoration: BoxDecoration(color: primaryColor),
-              ),
-              GridView.builder(
-                padding: EdgeInsets.only(top: 30.r),
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: abilityFeild.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 20,
+                decoration: BoxDecoration(color: SolidColors.primaryColor),
+                child: SvgPicture.asset(
+                  Assets.images.pattern,
+                  fit: BoxFit.cover,
+                  colorFilter: const ColorFilter.mode(
+                    Color.fromARGB(97, 255, 255, 255),
+                    BlendMode.srcIn,
+                  ),
                 ),
-                itemBuilder: (context, index) {
-                  return rowContainerGen(
-                    image: abilityFeild[index].image,
-                    text: abilityFeild[index].text,
-                    onTap: abilityFeild[index].onTap,
-                  );
-                },
+              ),
+              Padding(
+                padding: EdgeInsets.all(12.r),
+                //! Apps Grid
+                child: GridView.builder(
+                  padding: EdgeInsets.only(top: 24.h),
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: abilityFeild.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 20,
+                  ),
+                  itemBuilder: (context, index) {
+                    return rowContainerGen(
+                      image: abilityFeild[index].image,
+                      text: abilityFeild[index].text,
+                      onTap: abilityFeild[index].onTap,
+                    );
+                  },
+                ),
               ),
             ],
           ),
@@ -150,10 +87,10 @@ class HomeScreen extends StatelessWidget {
         return GestureDetector(
           onTap: bannerList[index].onTap,
           child: Card(
-            color: primaryColor,
+            color: SolidColors.primaryColor,
             margin: const EdgeInsets.only(top: 20, bottom: 20),
             elevation: 4,
-            shadowColor: shadowColor,
+            shadowColor: SolidColors.shadowColor,
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(20.r),
@@ -163,7 +100,7 @@ class HomeScreen extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: borderColor,
+                  color: SolidColors.borderColor,
                   width: 5,
                   style: BorderStyle.solid,
                 ),
@@ -174,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: shadowColor,
+                    color: SolidColors.shadowColor,
                     offset: const Offset(0, 4),
                     blurRadius: 8,
                     spreadRadius: 0.7,
@@ -202,7 +139,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               child: Text(
                                 BannerText.authorText,
-                                style: bannerAuthorStyle,
+                                style: AppTextStyle.bannerAuthorStyle,
                               ),
                             ),
                           ),
@@ -228,11 +165,11 @@ class HomeScreen extends StatelessWidget {
                     child: Text.rich(
                       TextSpan(
                         text: bannerList[index].title,
-                        style: bannerTextStyle,
+                        style: AppTextStyle.bannerTextStyle,
                         children: <TextSpan>[
                           TextSpan(
                             text: '\n${bannerList[index].subTitle}',
-                            style: bannersubTextStyle,
+                            style: AppTextStyle.bannersubTextStyle,
                           ),
                         ],
                       ),
@@ -244,11 +181,11 @@ class HomeScreen extends StatelessWidget {
           ),
         );
       },
+     //! SlideShow Options
       itemCount: bannerList.length,
       options: CarouselOptions(
         autoPlayAnimationDuration: const Duration(seconds: 1),
         autoPlayInterval: const Duration(seconds: 5),
-
         initialPage: 0,
         viewportFraction: 0.9,
         enableInfiniteScroll: true,
