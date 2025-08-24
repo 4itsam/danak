@@ -85,7 +85,6 @@ class _LoginState extends State<Login> {
                         ),
                         SizedBox(height: 30.h),
 
-                        
                         Align(
                           alignment: Alignment.topRight,
                           child: Text(
@@ -96,7 +95,7 @@ class _LoginState extends State<Login> {
                         //! Gender Radio Button
                         genderBoolBox(),
                         const Spacer(flex: 2),
-                        
+
                         SvgPicture.asset(Assets.images.terms),
                         SizedBox(height: 20.h),
 
@@ -187,16 +186,18 @@ class _LoginState extends State<Login> {
                 color: SolidColors.subTextBlackTitle,
               ),
             ),
-            Radio<String>(
-              fillColor: WidgetStatePropertyAll(SolidColors.primaryColor),
-              splashRadius: 30,
-              value: 'male',
+            RadioGroup<String>(
               groupValue: selectGender,
               onChanged: (value) {
                 setState(() {
                   selectGender = "male";
                 });
               },
+              child: Radio(
+                value: 'male',
+                fillColor: WidgetStatePropertyAll(SolidColors.primaryColor),
+                splashRadius: 30,
+              ),
             ),
           ],
         ),
@@ -211,16 +212,18 @@ class _LoginState extends State<Login> {
                 color: SolidColors.subTextBlackTitle,
               ),
             ),
-            Radio<String>(
-              fillColor: WidgetStatePropertyAll(SolidColors.primaryColor),
-              splashRadius: 30.r,
-              value: 'female',
+            RadioGroup<String>(
+
               groupValue: selectGender,
               onChanged: (value) {
                 setState(() {
                   selectGender = 'female';
                 });
-              },
+              }, child: Radio(
+                fillColor: WidgetStatePropertyAll(SolidColors.primaryColor),
+                splashRadius: 30.r,
+                value: 'female',
+              ),
             ),
           ],
         ),

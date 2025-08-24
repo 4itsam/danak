@@ -2127,7 +2127,7 @@ List<AbilityFeild> abilityFeild = [
     text: RowSection.textAi,
     image: Assets.images.ai,
     onTap: () => Get.to(
-      () => Ai(),
+      () => const Ai(),
       transition: Transition.downToUp,
       duration: const Duration(milliseconds: 400),
     ),
@@ -2147,7 +2147,7 @@ List<AbilityFeild> abilityFeild = [
     text: RowSection.textMoney,
     image: Assets.images.markets,
     onTap: () => Get.to(
-      () => Ai(),
+      () => const Ai(),
       transition: Transition.downToUp,
       duration: const Duration(milliseconds: 400),
     ),
@@ -2156,7 +2156,7 @@ List<AbilityFeild> abilityFeild = [
 
 List<Club> club = [
   Club(
-    imageClub: Assets.images.shakhes.path,
+    imageClub: Assets.images.clubAdministatorManagementt.path,
     titleClub: "انجمن علمی مدیریت دولتی دانشگاه سیستان و بلوچستان",
   ),
 

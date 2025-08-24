@@ -28,7 +28,6 @@ class _MainScreenState extends State<MainScreen> {
     List<Widget> screens = [const HomeScreen(), Profile()];
 
     return Scaffold(
-
       appBar: appBar(),
 
       //! Navigation Bar & Animation
@@ -45,7 +44,6 @@ class _MainScreenState extends State<MainScreen> {
         child: screens[selectedIndex],
       ),
 
-      
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: SalomonBottomBar(
@@ -70,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
             SalomonBottomBarItem(
-              icon: const Icon(Icons.person),
+              icon: const FaIcon(FontAwesomeIcons.user, size: 18),
               title: Text(
                 "پروفایل",
                 style: AppTextStyle.bottonNavigationTextStyle,
@@ -85,11 +83,7 @@ class _MainScreenState extends State<MainScreen> {
   AppBar appBar() {
     return AppBar(
       centerTitle: true,
-      title: SvgPicture.asset(
-        Assets.images.danakColor,
-        height: 40,
-        width: 40,
-      ),
+      title: SvgPicture.asset(Assets.images.danakColor, height: 40, width: 40),
       leading: IconButton(
         onPressed: () {
           Get.to(
