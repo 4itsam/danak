@@ -1,10 +1,10 @@
+import 'package:danak/components/components.dart';
 import 'package:danak/gen/assets.gen.dart';
-import 'package:danak/models/data.dart';
 import 'package:danak/view/login.dart';
-import 'package:danak/view/splash_screen.dart';
 import 'package:danak/theme/app_strings.dart';
 import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';
+import 'package:danak/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -33,16 +33,20 @@ class Profile extends StatelessWidget {
               slivers: [
                 //*Containes Profile Image, Name & Major
                 sliverProfileSection(name, major, sex, box),
-                //* Club section Text ()
-                sliverClubText(),
-                //* Grid For Every Clubs Logo & Name
-                sliverGridClub(),
-                //* A small Space foe Logn a Logn GridView
-                bottonFooter(),
+                sliverBanner()
               ],
             );
           },
         ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter sliverBanner() {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: bannerRate(),
       ),
     );
   }
@@ -52,63 +56,6 @@ class Profile extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(top: 50.h),
         child: SizedBox(height: 20.h, width: 100.w),
-      ),
-    );
-  }
-
-  SliverGrid sliverGridClub() {
-    return SliverGrid.builder(
-      itemCount: club.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 4,
-        crossAxisSpacing: 0,
-        mainAxisSpacing: 50,
-      ),
-      itemBuilder: (context, index) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 10,
-          children: [
-            Container(
-              height: 60.h,
-              width: 60.w,
-              decoration: AppBoxDecoration.clubContainerDecoration,
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Image.asset(club[index].imageClub),
-              ),
-            ),
-            SizedBox(
-              width: 80.w,
-              height: 30.h,
-
-              child: Text(
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.visible,
-                club[index].titleClub,
-                style: AppTextStyle.clubNameTextStyle,
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  SliverAppBar sliverClubText() {
-    return SliverAppBar(
-      backgroundColor: SolidColors.scaffoldBackground,
-      centerTitle: true,
-      toolbarHeight: 60,
-      collapsedHeight: 60,
-      expandedHeight: 30,
-      pinned: true,
-      floating: true,
-      snap: true,
-
-      title: Padding(
-        padding: EdgeInsets.only(top: 16.h),
-        child: Text(ProfileText.clubPartnersText, style: AppTextStyle.rowSectionTitle),
       ),
     );
   }
@@ -178,6 +125,7 @@ class Profile extends StatelessWidget {
                   ),
                   actions: [
                     Column(
+                      spacing: 4.w,
                       children: [
                         SizedBox(
                           width: double.infinity,
@@ -189,7 +137,10 @@ class Profile extends StatelessWidget {
                               box.deleteAll(["name", "major", "sex"]);
                               Get.offAll(() => SplashScreen());
                             },
-                            child: Text(ProfileText.exitText, style: AppTextStyle.exitTextStyle),
+                            child: Text(
+                              ProfileText.exitText,
+                              style: AppTextStyle.exitTextStyle,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -201,7 +152,10 @@ class Profile extends StatelessWidget {
                             onPressed: () {
                               Get.back();
                             },
-                            child: Text(ProfileText.cancel, style: AppTextStyle.changeInfoTextStyle),
+                            child: Text(
+                              ProfileText.cancel,
+                              style: AppTextStyle.changeInfoTextStyle,
+                            ),
                           ),
                         ),
                       ],
@@ -231,7 +185,10 @@ class Profile extends StatelessWidget {
         onPressed: () {
           Get.to(() => const Login(), transition: Transition.cupertinoDialog);
         },
-        child: Text(ProfileText.changeInformation, style: AppTextStyle.changeInfoTextStyle),
+        child: Text(
+          ProfileText.changeInformation,
+          style: AppTextStyle.changeInfoTextStyle,
+        ),
       ),
     );
   }
@@ -249,14 +206,16 @@ class Profile extends StatelessWidget {
               decoration: const BoxDecoration(shape: BoxShape.circle),
               child: imageGender(sex),
             ),
-
             Text.rich(
               textAlign: TextAlign.center,
               TextSpan(
                 text: name,
                 style: AppTextStyle.profileTitle,
                 children: <TextSpan>[
-                  TextSpan(text: '\n$major', style: AppTextStyle.profileSubTitle),
+                  TextSpan(
+                    text: '\n$major',
+                    style: AppTextStyle.profileSubTitle,
+                  ),
                 ],
               ),
             ),

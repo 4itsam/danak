@@ -12,14 +12,15 @@ import 'package:danak/models/data.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SolidColors.scaffoldBackground,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(children: [banner(bannerList), bottomSection()]),
+          child: Column(
+            children: [banner(bannerList), bottomSection(), bannerRate()],
+          ),
         ),
       ),
     );
@@ -37,7 +38,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 400.h,
+          height: 360.h,
           width: double.infinity,
           child: Stack(
             children: [
@@ -124,7 +125,6 @@ class HomeScreen extends StatelessWidget {
                     top: 10,
                     right: 10,
                     left: 20,
-
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -181,14 +181,14 @@ class HomeScreen extends StatelessWidget {
           ),
         );
       },
-     //! SlideShow Options
+      //! SlideShow Options
       itemCount: bannerList.length,
       options: CarouselOptions(
         autoPlayAnimationDuration: const Duration(seconds: 1),
         autoPlayInterval: const Duration(seconds: 5),
         initialPage: 0,
         viewportFraction: 0.9,
-        enableInfiniteScroll: true,
+        enableInfiniteScroll: false,
         autoPlay: true,
         enlargeCenterPage: false,
         autoPlayCurve: Curves.easeInToLinear,

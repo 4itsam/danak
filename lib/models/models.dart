@@ -59,7 +59,6 @@ class AbilityFeild {
 class Notes {
   String text;
   Notes({required this.text});
-  
 }
 
 class Club {

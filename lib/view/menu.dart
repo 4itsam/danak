@@ -4,6 +4,7 @@ import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';
 import 'package:danak/theme/app_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,28 +23,26 @@ class _MenuState extends State<Menu> {
         physics: const ClampingScrollPhysics(),
         slivers: [
           SliverAppBar(
-            shape: const RoundedRectangleBorder(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.vertical(
-                bottom: Radius.circular(50),
+                bottom: Radius.circular(50.r),
               ),
             ),
             automaticallyImplyLeading: false,
             centerTitle: true,
             backgroundColor: SolidColors.primaryColor,
-            toolbarHeight: 310,
+            toolbarHeight: 310.h,
             title: Column(
               children: [
-                Image.asset(Assets.images.danakBig.path),
-                Text(MenuText.menuAppbarText, style: AppTextStyle.menuTitle),
+                SvgPicture.asset(Assets.images.danakWhite, height: 120.h),
               ],
             ),
           ),
           SliverList.list(
             children: [
-              const SizedBox(height: 42),
-
+              SizedBox(height: 42.h),
               Padding(
-                padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
+                padding: EdgeInsets.only(left: 40.w, right: 40.w, bottom: 20.h),
                 child: textButton(
                   onTap: () {
                     Get.dialog(
@@ -54,7 +53,7 @@ class _MenuState extends State<Menu> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Image.asset(Assets.images.developer.path),
-                            const SizedBox(width: 10),
+                            SizedBox(width: 10.w),
                             Text.rich(
                               TextSpan(
                                 text: MenuText.devName,
@@ -77,14 +76,12 @@ class _MenuState extends State<Menu> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
+                padding: EdgeInsets.only(left: 40.w, right: 40.w, bottom: 20.h),
                 child: textButton(
                   text: MenuText.github,
                   icon: Assets.images.github,
                   onTap: () async {
-                    final Uri githubUri = Uri.parse(
-                      "https://github.com/4itsam/danak",
-                    );
+                    final Uri githubUri = Uri.parse(AppLink.githubLink);
 
                     if (await canLaunchUrl(githubUri)) {
                       await launchUrl(
@@ -96,7 +93,7 @@ class _MenuState extends State<Menu> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
+                padding: EdgeInsets.only(left: 40.w, right: 40.w, bottom: 20.h),
                 child: textButton(
                   text: MenuText.rate,
                   icon: Assets.images.rateIcon,
@@ -104,7 +101,7 @@ class _MenuState extends State<Menu> {
                     final Uri rateUri = Uri.parse(
                       //Todo
                       //change link for each market
-                      "https://myket.ir/app/com.danak.da",
+                      AppLink.myketLink,
                     );
                     if (await canLaunchUrl(rateUri)) {
                       await launchUrl(
@@ -116,7 +113,7 @@ class _MenuState extends State<Menu> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
+                padding: EdgeInsets.only(left: 40.w, right: 40.w, bottom: 20.h),
                 child: textButton(
                   onTap: () => Get.to(
                     () => TextPage(),
@@ -126,9 +123,9 @@ class _MenuState extends State<Menu> {
                   icon: Assets.images.privacyIcon,
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               socialIcons(SolidColors.socialIconsColorMenu),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               SvgPicture.asset(Assets.images.terms),
             ],
           ),
@@ -147,11 +144,11 @@ class _MenuState extends State<Menu> {
         onTap!();
       },
       child: Container(
-        height: 54,
+        height: 54.h,
         width: double.infinity,
         decoration: AppBoxDecoration.textMenuButtonStyle,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -194,7 +191,6 @@ Row socialIcons(Color color) {
           colorFilter: const ColorFilter.linearToSrgbGamma(),
         ),
       ),
-
       GestureDetector(
         onTap: () async {
           final Uri instaUrl = Uri.parse('https://instagram.com/shakhes_usb');

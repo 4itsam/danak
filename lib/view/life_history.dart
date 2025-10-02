@@ -1,4 +1,6 @@
+import 'package:danak/components/components.dart';
 import 'package:danak/gen/assets.gen.dart';
+import 'package:danak/theme/colors.dart';
 import 'package:danak/view/text_page.dart';
 import 'package:danak/theme/theme.dart';
 import 'package:danak/theme/app_strings.dart';
@@ -21,10 +23,8 @@ class LifeHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(RowSection.textHistoryLife, style: AppTextStyle.rowSectionTitle),
-      ),
+      backgroundColor: SolidColors.scaffoldBackground,
+      appBar: myAppBar(text: RowSection.textHistoryLife),
       body: SafeArea(
         child: CustomScrollView(
           controller: _scrollController,
@@ -56,7 +56,6 @@ class LifeHistory extends StatelessWidget {
                             ],
                             fullscreenDialog: true,
                             preventDuplicates: true,
-
                             transition: Transition.size,
                             duration: const Duration(milliseconds: 300),
                           ),

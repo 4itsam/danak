@@ -12,7 +12,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //initialize Hive Boxes
   await Hive.initFlutter();
-
   await Hive.openBox('userInformation');
   await Hive.openBox("notes");
   runApp(const MyApp());
@@ -20,7 +19,6 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     // ScreenUtilInit Responsive Package
@@ -31,7 +29,10 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
-          
+          theme: ThemeData(
+            colorSchemeSeed: Colors.pink
+          ),
+          themeMode: ThemeMode.system,
           title: AppName.appName,
           // Set Persian language To All App
           localizationsDelegates: const [

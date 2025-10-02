@@ -257,10 +257,43 @@ class AppTextStyle {
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
   );
+
+  static final TextStyle bannerRateTextStyle = TextStyle(
+    fontFamily: FontFamily.iranYekan,
+    color: SolidColors.textWhiteTitle,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+  );
+
+  static final TextStyle bannerRatesubTextStyle = TextStyle(
+    fontFamily: FontFamily.iranYekan,
+    color: SolidColors.textWhiteSubTitle,
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final TextStyle NoteSubject = TextStyle(
+      fontFamily: FontFamily.iranYekan,
+      fontSize: 18.sp,
+      fontWeight: FontWeight.w400);
+  static final TextStyle myLabelStyle = TextStyle(
+    fontFamily: FontFamily.iranYekan,
+    fontSize: 16.sp,
+  );
+
+  static final TextStyle noteEmptyPage = TextStyle(
+      fontFamily: FontFamily.iranYekan,
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w600);
+  static final TextStyle addNoteTextStyle = TextStyle(
+    fontFamily: FontFamily.iranYekan,
+    color: SolidColors.textWhiteTitle,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w700,
+  );
 }
 
 class AppBoxDecoration {
-  
   static final BoxDecoration bannerDecoration = BoxDecoration(
     border: Border.all(
       color: SolidColors.borderColor,
@@ -349,9 +382,8 @@ class AppBoxDecoration {
     color: SolidColors.profileContainerColor,
   );
 
-  static final ButtonStyle elevatedButtonTheme = ElevatedButton.styleFrom(
+  static ButtonStyle elevatedButtonTheme = ElevatedButton.styleFrom(
     backgroundColor: SolidColors.primaryColor,
-
     overlayColor: Colors.white60,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadiusGeometry.circular(15.r),
@@ -377,5 +409,17 @@ class AppBoxDecoration {
       style: BorderStyle.solid,
     ),
     borderRadius: BorderRadius.circular(20.r),
+  );
+
+  static final BoxDecoration bannerDecorationRate = BoxDecoration(
+    borderRadius: BorderRadius.circular(20.r),
+    gradient: GradientColors.bannerGradient,
+    boxShadow: [
+      BoxShadow(
+        color: SolidColors.shadowColor,
+        blurRadius: 4,
+        offset: const Offset(0, 2),
+      ),
+    ],
   );
 }

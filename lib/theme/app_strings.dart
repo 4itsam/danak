@@ -25,7 +25,7 @@ class RowSection {
   static const String textTheory = "نظریه ها";
   static const String textHistoryLife = "زندگی نامه";
   static const String textFacts = "دانستنی ها";
-  static const String textAi = "شهاب";
+  static const String textBooks = "جزوات درسی";
   static const String textNote = 'یادداشت';
   static const String textMoney = "بازارهای مالی";
 }
@@ -53,10 +53,19 @@ class NoteText {
   static const String deleteNoteAction = "حذف";
 
   static const String cancel = "انصراف و بازگشت";
+
+  static const String subject = "موضوع";
+
+  static const String detail = "یادداشت";
+
+  static const String save = "ذخیره";
 }
 
-const String emptyPage = "در حال توسعه این قابلیت هستیم";
-const String betaTitle = "بزودی امکان استفاده شما از این قابلیت میسر می شود";
+class DevText {
+  static const String emptyPage = "در حال توسعه این قابلیت هستیم";
+  static const String betaTitle =
+      "بزودی امکان استفاده شما از این قابلیت میسر می شود";
+}
 
 class ProfileText {
   static const String changeInformation = "تغییر اطلاعات کاربری";
@@ -195,4 +204,15 @@ wwwalimiri60@gmail.com
 با استفاده از اپلیکیشن دانَک، شما تأیید می‌کنید که متن این سیاست را مطالعه کرده‌اید و با مفاد آن آگاهانه موافقید.
 
 دانَک همیشه در کنار شماست — بی‌صدا، بی‌دسترسی، بی‌دغدغه.''';
+}
+
+class BannerRate {
+  static const String title = "نظرت برای ما مهمه!";
+  static const String subTitle = "\nنظرت رو راجب به اپلیکیشن بهمون بگو";
+}
+
+class AppLink {
+  static const String myketLink =
+      "https://myket.ir/app/com.danak.da?utm_source=search-ads-gift&utm_medium=cpc";
+  static const String githubLink = "https://github.com/4itsam/danak";
 }

@@ -6,6 +6,8 @@ import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';
 import 'package:danak/theme/app_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hive_ce/hive.dart';
@@ -16,7 +18,7 @@ class SplashScreen extends StatelessWidget {
   // Get Box values
   var name = Hive.box("userInformation").get('name');
   var major = Hive.box("userInformation").get('major');
-  
+
   @override
   Widget build(BuildContext context) {
     //! Check If User Login
@@ -30,7 +32,6 @@ class SplashScreen extends StatelessWidget {
       }
     });
     return Scaffold(
-
       backgroundColor: SolidColors.primaryColor,
       body: SafeArea(
         child: Center(
@@ -45,7 +46,6 @@ class SplashScreen extends StatelessWidget {
               //? Animated Hint Text
               AnimatedTextKit(
                 isRepeatingAnimation: false,
-
                 animatedTexts: [
                   TyperAnimatedText(
                     tipsText,
@@ -56,26 +56,30 @@ class SplashScreen extends StatelessWidget {
               ),
 
               //? Logos
-              Padding(
-                padding: const EdgeInsets.all(12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      Assets.images.shakhes.path,
-                      width: 40,
-                      height: 40,
-                    ),
-                    const SizedBox(width: 10),
-                    SvgPicture.asset(
-                      Assets.images.dakto,
-                      width: 30,
-                      height: 30,
-                    ),
-                  ],
-                ),
-              ),
-              // SizedBox(height: 20),
+              // Padding(
+              //   padding: const EdgeInsets.all(12),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       Image.asset(
+              //         Assets.images.shakhes.path,
+              //         width: 40,
+              //         height: 40,
+              //       ),
+              //       const SizedBox(width: 10),
+              //       SvgPicture.asset(
+              //         Assets.images.dakto,
+              //         width: 30,
+              //         height: 30,
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              SizedBox(height: 12.h,),
+              SpinKitThreeBounce(
+                color: SolidColors.loadingColor,
+                size: 28,
+              )
             ],
           ),
         ),

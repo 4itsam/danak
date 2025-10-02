@@ -1,5 +1,6 @@
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/theme/app_strings.dart';
+import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +12,7 @@ class Ai extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: SolidColors.scaffoldBackground,
       body: Center(
         child: Column(
           spacing: 10,
@@ -20,10 +22,12 @@ class Ai extends StatelessWidget {
             Text.rich(
               textAlign: TextAlign.center,
               TextSpan(
-                text: emptyPage,
+                text: DevText.emptyPage,
                 style: AppTextStyle.aiTextEmptyPage,
                 children: <TextSpan>[
-                  TextSpan(text: '\n$betaTitle', style: AppTextStyle.aiSubTextEmptyPage),
+                  TextSpan(
+                      text: '\n${DevText.betaTitle}',
+                      style: AppTextStyle.aiSubTextEmptyPage),
                 ],
               ),
             ),

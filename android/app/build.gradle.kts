@@ -31,13 +31,13 @@ android {
 
     defaultConfig {
         // "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
-        ndk {
-            abiFilters += listOf("x86_64")
-        }
+        // ndk {
+        //     abiFilters += listOf000rmeabi-v7a",)
+        // }
         applicationId = "com.danak.da"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
-        versionCode = 1006
+        versionCode = 1012
         versionName = flutter.versionName
     }
 

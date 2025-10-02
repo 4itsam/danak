@@ -8,8 +8,8 @@ import 'package:danak/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -36,6 +36,7 @@ class _MainScreenState extends State<MainScreen> {
         reverse: selectedIndex == 0,
         transitionBuilder: (child, animation, secondaryAnimation) {
           return FadeThroughTransition(
+            fillColor: SolidColors.scaffoldBackground,
             animation: animation,
             secondaryAnimation: secondaryAnimation,
             child: child,
@@ -49,7 +50,6 @@ class _MainScreenState extends State<MainScreen> {
         child: SalomonBottomBar(
           margin: EdgeInsets.symmetric(horizontal: 0.w, vertical: 15),
           selectedColorOpacity: 0.2,
-
           currentIndex: selectedIndex,
           selectedItemColor: SolidColors.primaryColor,
           unselectedItemColor: SolidColors.unSelectedNavigationBarIndex,
@@ -61,14 +61,14 @@ class _MainScreenState extends State<MainScreen> {
           items: [
             SalomonBottomBarItem(
               selectedColor: SolidColors.primaryColor,
-              icon: const FaIcon(FontAwesomeIcons.house, size: 18),
+              icon: const Icon(HugeIcons.strokeRoundedHome04, size: 24),
               title: Text(
                 "خانه",
                 style: AppTextStyle.bottonNavigationTextStyle,
               ),
             ),
             SalomonBottomBarItem(
-              icon: const FaIcon(FontAwesomeIcons.user, size: 18),
+              icon: const Icon(HugeIcons.strokeRoundedUser02, size: 24),
               title: Text(
                 "پروفایل",
                 style: AppTextStyle.bottonNavigationTextStyle,
@@ -82,6 +82,7 @@ class _MainScreenState extends State<MainScreen> {
 
   AppBar appBar() {
     return AppBar(
+      backgroundColor: SolidColors.appBarBackground,
       centerTitle: true,
       title: SvgPicture.asset(Assets.images.danakColor, height: 40, width: 40),
       leading: IconButton(

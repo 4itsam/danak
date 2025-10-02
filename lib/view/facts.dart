@@ -1,4 +1,6 @@
+import 'package:danak/components/components.dart';
 import 'package:danak/gen/assets.gen.dart';
+import 'package:danak/theme/colors.dart';
 import 'package:danak/view/text_page.dart';
 import 'package:danak/theme/theme.dart';
 import 'package:danak/theme/app_strings.dart';
@@ -24,16 +26,13 @@ class _FactsState extends State<Facts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(RowSection.textFacts, style: AppTextStyle.rowSectionTitle),
-        automaticallyImplyLeading: false,
-      ),
+      backgroundColor: SolidColors.scaffoldBackground,
+      appBar: myAppBar(text: RowSection.textFacts),
       body: SafeArea(
         child: CustomScrollView(
           controller: _scrollController,
           dragStartBehavior: _dragStartBehavior,
           scrollBehavior: _scrollBehavior,
-
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverList.builder(
@@ -61,7 +60,6 @@ class _FactsState extends State<Facts> {
                             ],
                             fullscreenDialog: true,
                             preventDuplicates: true,
-
                             transition: Transition.size,
                             duration: const Duration(milliseconds: 300),
                           ),

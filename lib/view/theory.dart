@@ -1,3 +1,4 @@
+import 'package:danak/components/components.dart';
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/view/text_page.dart';
 import 'package:danak/theme/colors.dart';
@@ -23,10 +24,7 @@ class Theory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SolidColors.scaffoldBackground,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(RowSection.textTheory, style: AppTextStyle.rowSectionTitle),
-      ),
+      appBar: myAppBar(text: RowSection.textTheory),
       body: SafeArea(
         child: CustomScrollView(
           controller: _scrollController,
@@ -96,7 +94,8 @@ class Theory extends StatelessWidget {
                                       ),
                                       child: Text(
                                         theoryList[index].author,
-                                        style: AppTextStyle.theoryBannerSubStyle,
+                                        style:
+                                            AppTextStyle.theoryBannerSubStyle,
                                       ),
                                     ),
                                   ),

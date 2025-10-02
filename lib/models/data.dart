@@ -18,7 +18,6 @@ List<BannerModels> bannerList = [
       transition: Transition.upToDown,
       duration: const Duration(milliseconds: 300),
     ),
-
     title: BannerText.usbTitle,
     subTitle: "محیط، اساتید و کلاس ها",
     image: Assets.images.usb.path,
@@ -38,7 +37,7 @@ List<BannerModels> bannerList = [
   ),
   //club
   BannerModels(
-    title: "شاخص | انجمن علمی مدیریت مالی",
+    title: "انجمن علمی مدیریت مالی",
     subTitle: 'تاسیس، افتخارات و اعضاء',
     image: Assets.images.club.path,
     text: '''🎓 معرفی انجمن علمی مدیریت مالی دانشگاه سیستان و بلوچستان
@@ -2122,22 +2121,23 @@ List<AbilityFeild> abilityFeild = [
       duration: const Duration(milliseconds: 200),
     ),
   ),
-  // <<<<<<[Ai]>>>>>>
-  AbilityFeild(
-    text: RowSection.textAi,
-    image: Assets.images.ai,
-    onTap: () => Get.to(
-      () => const Ai(),
-      transition: Transition.downToUp,
-      duration: const Duration(milliseconds: 400),
-    ),
-  ),
+
   // <<<<<<[Note]>>>>>>
   AbilityFeild(
     text: RowSection.textNote,
     image: Assets.images.note,
     onTap: () => Get.to(
-      () => const Note(),
+      () => Note(),
+      transition: Transition.downToUp,
+      duration: const Duration(milliseconds: 400),
+    ),
+  ),
+  // <<<<<<[Books]>>>>>>
+  AbilityFeild(
+    text: RowSection.textBooks,
+    image: Assets.images.books,
+    onTap: () => Get.to(
+      () => const Ai(),
       transition: Transition.downToUp,
       duration: const Duration(milliseconds: 400),
     ),
@@ -2151,17 +2151,5 @@ List<AbilityFeild> abilityFeild = [
       transition: Transition.downToUp,
       duration: const Duration(milliseconds: 400),
     ),
-  ),
-];
-
-List<Club> club = [
-  Club(
-    imageClub: Assets.images.clubAdministatorManagementt.path,
-    titleClub: "انجمن علمی مدیریت دولتی دانشگاه سیستان و بلوچستان",
-  ),
-
-  Club(
-    imageClub: Assets.images.shakhes.path,
-    titleClub: "انجمن علمی مدیریت دولتی دانشگاه ولایت ایرانشهر",
   ),
 ];
