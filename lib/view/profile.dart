@@ -1,4 +1,5 @@
-import 'package:danak/components/components.dart';
+
+import 'package:danak/components/banner.dart';
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/view/login.dart';
 import 'package:danak/theme/app_strings.dart';

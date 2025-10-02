@@ -1,4 +1,4 @@
-import 'package:danak/components/components.dart';
+import 'package:danak/components/app_bar.dart';
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/theme/colors.dart';
 import 'package:danak/view/text_page.dart';

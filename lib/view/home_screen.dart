@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:danak/components/components.dart';
+import 'package:danak/components/banner.dart';
+import 'package:danak/components/home_grid.dart';
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';

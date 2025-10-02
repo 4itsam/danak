@@ -1,5 +1,5 @@
 import 'package:danak/components/add_note.dart';
-import 'package:danak/components/components.dart';
+import 'package:danak/components/app_bar.dart';
 import 'package:danak/gen/assets.gen.dart';
 import 'package:danak/theme/colors.dart';
 import 'package:danak/theme/theme.dart';
