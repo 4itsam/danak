@@ -35,7 +35,6 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SolidColors.scaffoldBackground,
-
       body: SafeArea(
         //! layout Builder for a Responsive Screen When KeyBoard Show UP
         child: LayoutBuilder(

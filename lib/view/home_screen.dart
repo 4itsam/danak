@@ -8,7 +8,7 @@ import 'package:danak/theme/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:danak/models/data.dart';
+import 'package:danak/data/data.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

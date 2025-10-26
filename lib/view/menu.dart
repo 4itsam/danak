@@ -101,7 +101,7 @@ class _MenuState extends State<Menu> {
                     final Uri rateUri = Uri.parse(
                       //Todo
                       //change link for each market
-                      AppLink.myketLink,
+                      AppLink.bazaarLink,
                     );
                     if (await canLaunchUrl(rateUri)) {
                       await launchUrl(

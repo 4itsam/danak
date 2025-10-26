@@ -11,7 +11,7 @@ InkWell bannerRate() {
       final Uri rateUri = Uri.parse(
         //Todo
         //change link for each market
-        AppLink.myketLink,
+        AppLink.bazaarLink,
       );
       if (await canLaunchUrl(rateUri)) {
         await launchUrl(rateUri, mode: LaunchMode.externalApplication);

@@ -25,7 +25,7 @@ class RowSection {
   static const String textTheory = "نظریه ها";
   static const String textHistoryLife = "زندگی نامه";
   static const String textFacts = "دانستنی ها";
-  static const String textBooks = "جزوات درسی";
+  static const String textAi = "هوش مصنوعی";
   static const String textNote = 'یادداشت';
   static const String textMoney = "بازارهای مالی";
 }
@@ -215,4 +215,5 @@ class AppLink {
   static const String myketLink =
       "https://myket.ir/app/com.danak.da?utm_source=search-ads-gift&utm_medium=cpc";
   static const String githubLink = "https://github.com/4itsam/danak";
+  static const String bazaarLink = "https://cafebazaar.ir/app/com.danak.da";
 }

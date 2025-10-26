@@ -23,6 +23,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/books.svg
   String get books => 'assets/images/books.svg';
 
+  /// File path: assets/images/booksList.svg
+  String get booksList => 'assets/images/booksList.svg';
+
   /// File path: assets/images/club.png
   AssetGenImage get club => const AssetGenImage('assets/images/club.png');
 
@@ -135,6 +138,7 @@ class $AssetsImagesGen {
         usb,
         ai,
         books,
+        booksList,
         club,
         clubAdministatorManagementt,
         dakto,

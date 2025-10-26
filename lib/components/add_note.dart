@@ -14,88 +14,81 @@ class AddNote extends StatelessWidget {
   TextEditingController titleController = TextEditingController();
   TextEditingController detailController = TextEditingController();
   var box = Hive.box("notes");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: SolidColors.appBarBackground,
+      appBar: AppBar(
         backgroundColor: SolidColors.appBarBackground,
-        appBar: AppBar(
-          backgroundColor: SolidColors.appBarBackground,
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(16.r),
-          child: ValueListenableBuilder(
-              valueListenable: box.listenable(),
-              builder: (context, Box box, _) {
-                return Column(
-                  children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          textFieldGen(
-                              autofocus: true,
-                              maxLength: 50,
-                              text: NoteText.subject,
-                              controller: titleController,
-                              textInputAction: TextInputAction.next),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          SizedBox(
-                            height: 550,
-                            child: textFieldGen(
-                                autofocus: true,
-                                maxLength: 1000,
-                                text: NoteText.detail,
-                                controller: detailController,
-                                textInputAction: TextInputAction.next,
-                                maxLine: null),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: SingleChildScrollView(
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                final String title = titleController.text;
-                                final String detail = detailController.text;
-                                if (title.isEmpty || detail.isEmpty) {
-                                  errorLoginWidget();
-                                } else {
-                                  box.add({"title": title, "detail": detail});
-                                  Get.back();
-                                }
-                              },
-                              style: AppBoxDecoration.elevatedButtonTheme,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                spacing: 10.w,
-                                children: [
-                                  Text(
-                                    NoteText.save,
-                                    style: AppTextStyle.loginBottonActionStyle,
-                                  ),
-                                  const Icon(
-                                    Icons.save,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.r),
+        child: ValueListenableBuilder(
+          valueListenable: box.listenable(),
+          builder: (context, Box box, _) {
+            return Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SizedBox(height: 20.h),
+                        textFieldGen(
+                          autofocus: true,
+                          maxLength: 50,
+                          text: NoteText.subject,
+                          controller: titleController,
+                          textInputAction: TextInputAction.next,
                         ),
-                      ),
-                    )
-                  ],
-                );
-              }),
-        ));
+                        SizedBox(height: 20.h),
+                        textFieldGen(
+                          autofocus: true,
+                          maxLength: 1000,
+                          text: NoteText.detail,
+                          controller: detailController,
+                          textInputAction: TextInputAction.newline,
+                          maxLine: null,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      final String title = titleController.text;
+                      final String detail = detailController.text;
+                      if (title.isEmpty || detail.isEmpty) {
+                        errorLoginWidget();
+                      } else {
+                        box.add({"title": title, "detail": detail});
+                        Get.back();
+                      }
+                    },
+                    style: AppBoxDecoration.elevatedButtonTheme,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          NoteText.save,
+                          style: AppTextStyle.loginBottonActionStyle,
+                        ),
+                        SizedBox(width: 10.w),
+                        const Icon(
+                          Icons.save,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
   }
 }

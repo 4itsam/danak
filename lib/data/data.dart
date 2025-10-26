@@ -2132,10 +2132,10 @@ List<AbilityFeild> abilityFeild = [
       duration: const Duration(milliseconds: 400),
     ),
   ),
-  // <<<<<<[Books]>>>>>>
+  // <<<<<<[AI]>>>>>>
   AbilityFeild(
-    text: RowSection.textBooks,
-    image: Assets.images.books,
+    text: RowSection.textAi,
+    image: Assets.images.ai,
     onTap: () => Get.to(
       () => const Ai(),
       transition: Transition.downToUp,
