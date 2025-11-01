@@ -186,13 +186,13 @@ class HomeScreen extends StatelessWidget {
       itemCount: bannerList.length,
       options: CarouselOptions(
         autoPlayAnimationDuration: const Duration(seconds: 1),
-        autoPlayInterval: const Duration(seconds: 5),
+        autoPlayInterval: const Duration(seconds: 3),
         initialPage: 0,
-        viewportFraction: 0.9,
-        enableInfiniteScroll: false,
+        viewportFraction: 1,
+        enableInfiniteScroll: true,
         autoPlay: true,
         enlargeCenterPage: false,
-        autoPlayCurve: Curves.easeInToLinear,
+        autoPlayCurve: Curves.linearToEaseOut,
         animateToClosest: true,
       ),
     );

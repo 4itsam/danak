@@ -272,7 +272,7 @@ class AppTextStyle {
     fontWeight: FontWeight.w500,
   );
 
-  static final TextStyle NoteSubject = TextStyle(
+  static final TextStyle noteSubject = TextStyle(
       fontFamily: FontFamily.iranYekan,
       fontSize: 18.sp,
       fontWeight: FontWeight.w400);

@@ -1,5 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:danak/gen/assets.gen.dart';
+import 'package:danak/view/ai.dart';
 import 'package:danak/view/home_screen.dart';
 import 'package:danak/view/menu.dart';
 import 'package:danak/view/profile.dart';
@@ -25,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     //! Navigate Screens
-    List<Widget> screens = [const HomeScreen(), Profile()];
+    List<Widget> screens = [const HomeScreen(), const Ai(), Profile()];
 
     return Scaffold(
       appBar: appBar(),
@@ -61,14 +62,24 @@ class _MainScreenState extends State<MainScreen> {
           items: [
             SalomonBottomBarItem(
               selectedColor: SolidColors.primaryColor,
-              icon: const Icon(HugeIcons.strokeRoundedHome04, size: 24),
+              icon: const HugeIcon(
+                icon: HugeIcons.strokeRoundedHome04,
+                size: 24,
+              ),
               title: Text(
                 "خانه",
                 style: AppTextStyle.bottonNavigationTextStyle,
               ),
             ),
             SalomonBottomBarItem(
-              icon: const Icon(HugeIcons.strokeRoundedUser02, size: 24),
+                icon: const HugeIcon(
+                  icon: HugeIcons.strokeRoundedAiBrain02,
+                ),
+                title: Text("هوش مصنوعی",
+                    style: AppTextStyle.bottonNavigationTextStyle)),
+            SalomonBottomBarItem(
+              icon:
+                  const HugeIcon(icon: HugeIcons.strokeRoundedUser02, size: 24),
               title: Text(
                 "پروفایل",
                 style: AppTextStyle.bottonNavigationTextStyle,

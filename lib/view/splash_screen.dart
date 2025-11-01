@@ -79,7 +79,8 @@ class SplashScreen extends StatelessWidget {
               SpinKitThreeBounce(
                 color: SolidColors.loadingColor,
                 size: 28,
-              )
+              ),
+              const SizedBox(height: 10,)
             ],
           ),
         ),

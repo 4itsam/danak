@@ -37,7 +37,7 @@ android {
         applicationId = "com.danak.da"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
-        versionCode = 1015
+        versionCode = 1020
         versionName = flutter.versionName
     }
 

@@ -24,13 +24,13 @@ class BannerModels {
   String title;
   String subTitle;
   String image;
-  String text;
+  String? text;
   VoidCallback onTap;
   BannerModels({
     required this.title,
     required this.subTitle,
     required this.image,
-    required this.text,
+    this.text,
     required this.onTap,
   });
 }

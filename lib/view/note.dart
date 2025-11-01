@@ -102,7 +102,7 @@ class Note extends StatelessWidget {
                         title: Text(
                           textAlign: TextAlign.start,
                           note['title'] ?? "",
-                          style: AppTextStyle.NoteSubject,
+                          style: AppTextStyle.noteSubject,
                         ),
                         backgroundColor: SolidColors.textFeildBackgroundColor,
                         children: [

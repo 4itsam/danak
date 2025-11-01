@@ -33,6 +33,10 @@ class $AssetsImagesGen {
   AssetGenImage get clubAdministatorManagementt =>
       const AssetGenImage('assets/images/clubAdministatorManagementt.png');
 
+  /// File path: assets/images/clubWorkshops.png
+  AssetGenImage get clubWorkshops =>
+      const AssetGenImage('assets/images/clubWorkshops.png');
+
   /// File path: assets/images/dakto.svg
   String get dakto => 'assets/images/dakto.svg';
 
@@ -141,6 +145,7 @@ class $AssetsImagesGen {
         booksList,
         club,
         clubAdministatorManagementt,
+        clubWorkshops,
         dakto,
         daktoIcon,
         danakBig,

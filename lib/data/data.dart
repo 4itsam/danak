@@ -126,6 +126,16 @@ List<BannerModels> bannerList = [
       duration: const Duration(milliseconds: 300),
     ),
   ),
+  //club Workshops
+  BannerModels(
+      title: "فعالیت های انجمن مدیریت مالی",
+      subTitle: "کارگاه ها، دوره ها و برنامه های انجمن",
+      image: Assets.images.clubWorkshops.path,
+      onTap: () => Get.to(
+            () => const Ai(),
+            transition: Transition.upToDown,
+            duration: const Duration(milliseconds: 300),
+          ))
 ];
 
 List<TheoryModels> theoryList = [
@@ -2134,7 +2144,7 @@ List<AbilityFeild> abilityFeild = [
   ),
   // <<<<<<[AI]>>>>>>
   AbilityFeild(
-    text: RowSection.textAi,
+    text: RowSection.masters,
     image: Assets.images.ai,
     onTap: () => Get.to(
       () => const Ai(),

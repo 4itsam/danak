@@ -25,7 +25,7 @@ class RowSection {
   static const String textTheory = "نظریه ها";
   static const String textHistoryLife = "زندگی نامه";
   static const String textFacts = "دانستنی ها";
-  static const String textAi = "هوش مصنوعی";
+  static const String masters = "اساتید";
   static const String textNote = 'یادداشت';
   static const String textMoney = "بازارهای مالی";
 }
@@ -82,7 +82,7 @@ class ProfileText {
       "در صورت خروج از حساب کاربری، امکان استفاده از اپلیکیشن دیگر وجود نداشته و برای ورود مجدد به اپلیکیشن نیاز به ساخت مجدد حساب کاربری است.\nمشخصات شما به صورت کاملا محلی در گوشی شما ذخیره می شوند و امکان دسترسی افراد ثالث به اون ها وجود نداره";
 }
 
-const String tipsText = 'برای نمایش سریع متن بر روی آن کلیک کنید';
+const String tipsText = "برای نسل مدیران آینده";
 
 class MenuText {
   static const String menuAppbarText = "انجمن علمی مدیریت مالی شاخص";
